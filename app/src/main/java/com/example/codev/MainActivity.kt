@@ -1,9 +1,11 @@
 package com.example.codev
 
+import BottomNavigation
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -11,9 +13,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -69,10 +73,14 @@ class MainActivity : ComponentActivity() {
                                     unfocusedIndicatorColor = Color.Transparent,
                                     focusedIndicatorColor = Color.Transparent
                                 ),
-                                leadingIcon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null, Modifier
-                                    .scale(1.3F)
-                                    .padding(10.dp)) },
+                                leadingIcon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null,
+                                    Modifier
+                                        .scale(1.3F)
+                                        .padding(10.dp)) },
                             )
+                        },
+                        bottomBar = {
+                            BottomNavigation()
                         }
                     ) {
 
