@@ -5,16 +5,22 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
@@ -29,11 +35,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.codev.ui.theme.CodevTheme
 
 class MainActivity : ComponentActivity() {
@@ -84,7 +95,68 @@ class MainActivity : ComponentActivity() {
                             BottomNavigation()
                         }
                     ) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(bottom = 66.dp, top = 66.dp)
+                        ) {
 
+                            OutlinedCard(
+                                onClick = { /*TODO*/ },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(32.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(32.dp)
+                                ) {
+                                    Text(text = "Codev", fontSize = 20.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        textAlign = TextAlign.Center,
+                                        modifier = Modifier
+                                            .padding(8.dp)
+                                            .align(Alignment.CenterHorizontally)
+                                    )
+                                    Text(text = getString(R.string.demo_discription),
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.Normal,
+                                        textAlign = TextAlign.Center,
+                                        modifier = Modifier
+                                            .padding(8.dp)
+                                            .align(Alignment.CenterHorizontally)
+
+                                    )
+                                    Image(painter = painterResource(id = R.drawable.concept),
+                                        contentDescription = "project image",
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(vertical = 16.dp)
+                                            .align(Alignment.CenterHorizontally)
+                                    )
+                                    Button(
+                                        onClick = { /*TODO*/ },
+                                        modifier = Modifier
+                                            .padding(vertical = 16.dp)
+                                            .align(Alignment.CenterHorizontally)
+                                    ) {
+                                        Text(text = "View Project")
+                                    }
+                                }
+                            }
+
+                            ExtendedFloatingActionButton(
+                                onClick = { /*TODO*/ },
+                                modifier = Modifier
+                                    .padding(vertical = 32.dp, horizontal = 16.dp)
+                                    .align(Alignment.BottomEnd)
+
+                            ) {
+                                Icon(imageVector = Icons.Filled.Add, contentDescription = "add project")
+                            }
+
+                        }
                     }
                 }
             }
