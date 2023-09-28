@@ -22,6 +22,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import com.example.codev.R
 
 
 data class BottomNavigationItem(
@@ -31,6 +34,12 @@ data class BottomNavigationItem(
     val hasNews: Boolean,
     val badgeCount: Int? = null
 )
+
+val spacefamily = FontFamily(
+    Font(R.font.spacebold/*, FontWeight.Bold*/),
+    Font(R.font.spaceregular/*, FontWeight.Light*/),
+)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottomNavigation(
