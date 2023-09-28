@@ -79,6 +79,7 @@ class MainActivity : ComponentActivity() {
                                         .padding(10.dp)) },
                             )
                         },
+
                         bottomBar = {
                             BottomNavigation()
                         }

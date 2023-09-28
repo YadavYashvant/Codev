@@ -1,8 +1,10 @@
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Notifications
@@ -42,9 +44,9 @@ fun BottomNavigation(
             hasNews = false,
         ),
         BottomNavigationItem(
-            title = "Chat",
-            selectedIcon = Icons.Filled.Email,
-            unselectedIcon = Icons.Outlined.Email,
+            title = "Projects",
+            selectedIcon = Icons.Filled.DateRange,
+            unselectedIcon = Icons.Outlined.DateRange,
             hasNews = false,
             /*badgeCount = 0*/
         ),
@@ -64,6 +66,8 @@ fun BottomNavigation(
     var selectedItemIndex by rememberSaveable {
         mutableStateOf(0)
     }
+
+
     NavigationBar {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
