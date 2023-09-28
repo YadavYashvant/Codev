@@ -72,7 +72,6 @@ class MainActivity : ComponentActivity() {
                                 leadingIcon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null, Modifier
                                     .scale(1.3F)
                                     .padding(10.dp)) },
-
                             )
                         }
                     ) {
