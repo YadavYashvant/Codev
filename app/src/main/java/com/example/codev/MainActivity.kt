@@ -57,6 +57,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.findNavController
+import com.example.codev.presentation.screens.AddprojectScreen
+import com.example.codev.presentation.screens.HomeScreen
+import com.example.codev.presentation.screens.NotificationScreen
+import com.example.codev.presentation.screens.ProjectScreen
+import com.example.codev.presentation.screens.SettingScreen
 import com.example.codev.ui.theme.CodevTheme
 
 val spacefamily = FontFamily(
@@ -76,6 +85,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val navController = rememberNavController()
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
                         /*topBar = {
@@ -86,7 +96,7 @@ class MainActivity : ComponentActivity() {
                             )
                         }*/
 
-                        topBar = {
+                        /*topBar = {
                             var value by remember { mutableStateOf("") }
                             val onValueChange: (String) -> Unit = { value = it }
                             TextField(
@@ -106,250 +116,39 @@ class MainActivity : ComponentActivity() {
                                         .scale(1.3F)
                                         .padding(10.dp)) },
                             )
-                        },
+                        },*/
 
                         bottomBar = {
-                            BottomNavigation()
+                            BottomNavigation(navController = navController)
                         }
                     ) {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(bottom = 66.dp, top = 66.dp)
-                        ) {
-                            val scrollState = rememberScrollState()
-                            Column(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .verticalScroll(scrollState)
-                                    .padding(vertical = 16.dp)
-                            ) {
 
-                                OutlinedCard(
-                                    onClick = { /*TODO*/ },
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(20.dp)
-                                ) {
-                                    Column(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(20.dp)
-                                    ) {
-                                        Text(
-                                            fontFamily = spacefamily,
-                                            text = "Codev", fontSize = 20.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            textAlign = TextAlign.Center,
-                                            modifier = Modifier
-                                                .padding(8.dp)
-                                                .align(Alignment.CenterHorizontally)
-                                        )
-                                        Text(
 
-                                            text = getString(R.string.demo_discription),
-                                            fontFamily = spacefamily,
-                                            fontSize = 14.sp,
-                                            fontWeight = FontWeight.Normal,
-                                            textAlign = TextAlign.Center,
-                                            modifier = Modifier
-                                                .padding(8.dp)
-                                                .align(Alignment.CenterHorizontally)
-
-                                        )
-                                        Image(
-                                            painter = painterResource(id = R.drawable.concept),
-                                            contentDescription = "project image",
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .padding(vertical = 16.dp)
-                                                .align(Alignment.CenterHorizontally)
-                                        )
-                                        Row(
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .padding(10.dp)
-                                                .align(Alignment.Start)
-                                                .clip(shape = MaterialTheme.shapes.extraLarge)
-                                                .background(color = Color.LightGray)
-                                                ,
-                                            horizontalArrangement = Arrangement.SpaceBetween
-
-                                        ) {
-                                            Button(
-                                                onClick = { /*TODO*/ },
-                                                modifier = Modifier
-                                                    .padding(vertical = 12.dp, horizontal = 16.dp)
-                                            ) {
-                                                Text(text = "View Project", fontFamily = spacefamily, fontWeight = FontWeight.Bold)
-                                            }
-
-                                            OutlinedButton(
-                                                onClick = { /*TODO*/ },
-                                                modifier = Modifier
-                                                    .padding(vertical = 12.dp, horizontal = 16.dp)
-                                            ) {
-                                                Icon(imageVector = Icons.Filled.Info, contentDescription = "info", Modifier.padding(end = 5.dp))
-                                                Text(text = "Inquire", fontFamily = spacefamily, /*fontWeight = FontWeight.Bold*/)
-                                            }
-                                        }
-                                    }
-                                }
-                                OutlinedCard(
-                                    onClick = { /*TODO*/ },
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(20.dp)
-                                ) {
-                                    Column(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(20.dp)
-                                    ) {
-                                        Text(text = "Notesy",
-                                            fontFamily = spacefamily,
-                                            fontSize = 20.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            textAlign = TextAlign.Center,
-                                            modifier = Modifier
-                                                .padding(8.dp)
-                                                .align(Alignment.CenterHorizontally)
-                                        )
-                                        Text(text = getString(R.string.demo_discription),
-                                            fontFamily = spacefamily,
-                                            fontSize = 14.sp,
-                                            fontWeight = FontWeight.Normal,
-                                            textAlign = TextAlign.Center,
-                                            modifier = Modifier
-                                                .padding(8.dp)
-                                                .align(Alignment.CenterHorizontally)
-
-                                        )
-                                        Image(painter = painterResource(id = R.drawable.concept),
-                                            contentDescription = "project image",
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .padding(vertical = 16.dp)
-                                                .align(Alignment.CenterHorizontally)
-                                        )
-                                        Button(
-                                            onClick = { /*TODO*/ },
-                                            modifier = Modifier
-                                                .padding(vertical = 16.dp)
-                                                .align(Alignment.CenterHorizontally)
-                                        ) {
-                                            Text(text = "View Project", fontFamily = spacefamily, fontWeight = FontWeight.Bold)
-                                        }
-                                    }
-                                }
-                                OutlinedCard(
-                                    onClick = { /*TODO*/ },
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(20.dp)
-                                ) {
-                                    Column(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(20.dp)
-                                    ) {
-                                        Text(text = "Notesy",
-                                            fontFamily = spacefamily,
-                                            fontSize = 20.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            textAlign = TextAlign.Center,
-                                            modifier = Modifier
-                                                .padding(8.dp)
-                                                .align(Alignment.CenterHorizontally)
-                                        )
-                                        Text(text = getString(R.string.demo_discription),
-                                            fontFamily = spacefamily,
-                                            fontSize = 14.sp,
-                                            fontWeight = FontWeight.Normal,
-                                            textAlign = TextAlign.Center,
-                                            modifier = Modifier
-                                                .padding(8.dp)
-                                                .align(Alignment.CenterHorizontally)
-
-                                        )
-                                        Image(painter = painterResource(id = R.drawable.concept),
-                                            contentDescription = "project image",
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .padding(vertical = 16.dp)
-                                                .align(Alignment.CenterHorizontally)
-                                        )
-                                        Button(
-                                            onClick = { /*TODO*/ },
-                                            modifier = Modifier
-                                                .padding(vertical = 16.dp)
-                                                .align(Alignment.CenterHorizontally)
-                                        ) {
-                                            Text(text = "View Project", fontFamily = spacefamily, fontWeight = FontWeight.Bold)
-                                        }
-                                    }
-                                }
-                                OutlinedCard(
-                                    onClick = { /*TODO*/ },
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(20.dp)
-                                ) {
-                                    Column(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(20.dp)
-                                    ) {
-                                        Text(text = "Notesy",
-                                            fontFamily = spacefamily,
-                                            fontSize = 20.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            textAlign = TextAlign.Center,
-                                            modifier = Modifier
-                                                .padding(8.dp)
-                                                .align(Alignment.CenterHorizontally)
-                                        )
-                                        Text(text = getString(R.string.demo_discription),
-                                            fontFamily = spacefamily,
-                                            fontSize = 14.sp,
-                                            fontWeight = FontWeight.Normal,
-                                            textAlign = TextAlign.Center,
-                                            modifier = Modifier
-                                                .padding(8.dp)
-                                                .align(Alignment.CenterHorizontally)
-
-                                        )
-                                        Image(painter = painterResource(id = R.drawable.concept),
-                                            contentDescription = "project image",
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .padding(vertical = 16.dp)
-                                                .align(Alignment.CenterHorizontally)
-                                        )
-                                        Button(
-                                            onClick = { /*TODO*/ },
-                                            modifier = Modifier
-                                                .padding(vertical = 16.dp)
-                                                .align(Alignment.CenterHorizontally)
-                                        ) {
-                                            Text(text = "View Project", fontFamily = spacefamily, fontWeight = FontWeight.Bold)
-                                        }
-                                    }
-                                }
+                        NavHost(navController = navController, startDestination = "Home") {
+                            composable("Home") {
+                                HomeScreen(navController)
                             }
-
-
-                            ExtendedFloatingActionButton(
-                                onClick = { /*TODO*/ },
-                                modifier = Modifier
-                                    .padding(vertical = 32.dp, horizontal = 16.dp)
-                                    .align(Alignment.BottomEnd)
-
-                            ) {
-                                Icon(imageVector = Icons.Filled.Add, contentDescription = "add project")
+                            composable("Projects") {
+                                ProjectScreen()
                             }
+                            composable("Notifications") {
+                                NotificationScreen()
+                            }
+                            composable("Settings") {
+                                SettingScreen()
+                            }
+                            composable("addproject") {
+                                Text("Add Project",
+                                    fontFamily = com.example.codev.spacefamily,
+                                    fontSize = 30.sp, fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.fillMaxSize().padding(bottom = 10.dp),
+                                    textAlign = TextAlign.Center
+                                )
 
+                                AddprojectScreen()
+                            }
                         }
+
                     }
                 }
             }

@@ -24,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.navigation.NavController
 import com.example.codev.R
 
 
@@ -43,7 +44,7 @@ val spacefamily = FontFamily(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottomNavigation(
-
+navController: NavController
 ){
     val items = listOf(
         BottomNavigationItem(
@@ -83,6 +84,7 @@ fun BottomNavigation(
                 selected = selectedItemIndex == index,
                 onClick = {
                     selectedItemIndex = index
+                    navController.navigate(item.title)
                     // navController.navigate(item.title)
                 },
                 label = {
