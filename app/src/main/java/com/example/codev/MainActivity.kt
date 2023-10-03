@@ -88,35 +88,6 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
-                        /*topBar = {
-                            TopAppBar(
-                                title = { Text(text = "Codev") },
-                                navigationIcon = { Icon(Icons.Filled.Menu, contentDescription = null) }
-                                actions = { *//* TODO *//* }
-                            )
-                        }*/
-
-                        /*topBar = {
-                            var value by remember { mutableStateOf("") }
-                            val onValueChange: (String) -> Unit = { value = it }
-                            TextField(
-                                value = value,
-                                onValueChange = onValueChange,
-                                shape = MaterialTheme.shapes.extraLarge,
-                                placeholder = { Text(text = "Search Projects", fontFamily = spacefamily) },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(16.dp),
-                                colors = TextFieldDefaults.textFieldColors(
-                                    unfocusedIndicatorColor = Color.Transparent,
-                                    focusedIndicatorColor = Color.Transparent
-                                ),
-                                leadingIcon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null,
-                                    Modifier
-                                        .scale(1.3F)
-                                        .padding(10.dp)) },
-                            )
-                        },*/
 
                         bottomBar = {
                             BottomNavigation(navController = navController)
