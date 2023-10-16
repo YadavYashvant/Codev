@@ -5,7 +5,7 @@ data class SigninState(
     val signInError: String? = null
 )
 
-data class signinwithemailandpasswordResult (
+data class SignInStatecustom (
     val isLoading: Boolean = false,
     val isSuccess: String? = "",
     val isError: String? = ""
