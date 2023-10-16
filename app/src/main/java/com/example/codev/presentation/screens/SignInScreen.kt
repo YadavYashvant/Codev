@@ -1,4 +1,4 @@
-package com.example.codev.presentation.`screens-layout`
+package com.example.codev.presentation.screens
 
 import com.example.codev.presentation.sign_in.SigninState
 

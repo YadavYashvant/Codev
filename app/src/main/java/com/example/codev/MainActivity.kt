@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import com.example.codev.Navigation.NavigationGraph
 import com.example.codev.ui.theme.CodevTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 val spacefamily = FontFamily(
     Font(R.font.spacebold/*, FontWeight.Bold*/),
@@ -27,6 +28,7 @@ val spacefamily = FontFamily(
     )
 }*/
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
 

@@ -9,6 +9,8 @@ import kotlinx.coroutines.flow.update
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavController
+import com.example.codev.Navigation.Screens
 import com.example.codev.utils.Resource
 import com.google.firebase.auth.AuthCredential
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -48,11 +50,12 @@ class SignInViewModel @Inject constructor(
     }
 
 
-    fun loginUser(email: String, password: String) = viewModelScope.launch {
+    fun loginUser(email: String, password: String, navController: NavController) = viewModelScope.launch {
         repository.loginUser(email, password).collect { result ->
             when (result) {
                 is Resource.Success -> {
                     _signInState.send(SignInStatecustom(isSuccess = "Sign In Success "))
+                    navController.navigate(Screens.MainScreen.route)
                 }
                 is Resource.Loading -> {
                     _signInState.send(SignInStatecustom(isLoading = true))

@@ -5,7 +5,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.codev.presentation.`screens-layout`.LoginScreen
+import com.example.codev.presentation.screens.HomeScreen
+import com.example.codev.presentation.screens.LoginScreen
+import com.example.codev.presentation.screens.MainScreen
+import com.example.codev.presentation.screens.ProjectScreen
+import com.example.codev.presentation.screens.SettingScreen
+import com.example.codev.presentation.sign_in.SignInScreen
+import com.example.codev.presentation.sign_up.SignUpScreen
 
 @Composable
 fun NavigationGraph(
@@ -16,11 +22,22 @@ fun NavigationGraph(
         startDestination = Screens.SignInScreen.route
         ) {
         composable(route = Screens.SignInScreen.route) {
-            LoginScreen()
-
+            SignInScreen(navController = navController)
         }
         composable(route = Screens.SignUpScreen.route) {
-            SignUpScreen(navController)
+            SignUpScreen(navController = navController)
+        }
+        composable(route = Screens.HomeScreen.route) {
+            HomeScreen(navController = navController)
+        }
+        composable(route = Screens.ProjectScreen.route) {
+            ProjectScreen()
+        }
+        composable(route = Screens.SettingScreen.route) {
+            SettingScreen()
+        }
+        composable(route = Screens.MainScreen.route) {
+            MainScreen()
         }
     }
 }

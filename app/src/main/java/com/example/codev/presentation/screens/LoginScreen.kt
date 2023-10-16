@@ -1,4 +1,4 @@
-package com.example.codev.presentation.`screens-layout`
+package com.example.codev.presentation.screens
 
 
 import androidx.compose.foundation.layout.Arrangement
