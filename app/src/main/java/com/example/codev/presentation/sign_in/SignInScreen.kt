@@ -4,6 +4,7 @@ package com.example.codev.presentation.sign_in
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -79,13 +80,30 @@ fun SignInScreen(
         Modifier.fillMaxSize()
     ) {
 
-        Text(text = "CODEV",
-            textAlign = TextAlign.Center,
-            fontFamily = spacefamily,
-            fontWeight = FontWeight.Bold,
-            fontSize = 36.sp,
-            modifier = Modifier.align(Alignment.TopCenter).padding(top = 32.dp)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(top = 25.dp)
+        ) {
+            Text(text = "CODEV",
+                textAlign = TextAlign.Center,
+                fontFamily = spacefamily,
+                fontWeight = FontWeight.Bold,
+                fontSize = 36.sp,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
             )
+
+            Image(
+                painter = painterResource(id = R.drawable.concept),
+                contentDescription = "project image",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 10.dp)
+                    .align(Alignment.CenterHorizontally)
+            )
+        }
+
 
 
         OutlinedCard(
@@ -101,7 +119,7 @@ fun SignInScreen(
                 verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Enter your credential's to register",
+                    text = "Enter your credentials",
                     fontWeight = FontWeight.Medium,
                     fontSize = 15.sp,
                     color = Color.Gray,
@@ -147,8 +165,6 @@ fun SignInScreen(
                         scope.launch {
                             viewModel.loginUser(email, password, navController)
 
-
-
                         }
                     },
                     modifier = Modifier
@@ -157,11 +173,14 @@ fun SignInScreen(
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Black, contentColor = Color.White
                     ),
-                    shape = RoundedCornerShape(15.dp)
+                    shape = RoundedCornerShape(30.dp)
                 ) {
-                    Text(text = "Sign In", color = Color.White, modifier = Modifier.padding(7.dp),
+                    Text(
+                        text = "Sign In",
+                        color = Color.White,
+                        modifier = Modifier.padding(7.dp),
                         fontFamily = spacefamily,
-                        fontSize = 24.sp
+                        fontSize = 18.sp,
                     )
                 }
 
