@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Codev</string>
     <string name="demo_discription">A collaborative space for developers to find and list their undergoing projects and ideas to be worked on and seek for team members with requirements.</string>
+    <string name="client_id">936026791052-erpba6ep8vo592r7a539hpebug6femtd.apps.googleusercontent.com</string>
 </resources>
