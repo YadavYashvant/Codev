@@ -27,15 +27,7 @@ fun NavigationGraph(
         composable(route = Screens.SignUpScreen.route) {
             SignUpScreen(navController = navController)
         }
-        composable(route = Screens.HomeScreen.route) {
-            HomeScreen(navController = navController)
-        }
-        composable(route = Screens.ProjectScreen.route) {
-            ProjectScreen()
-        }
-        composable(route = Screens.SettingScreen.route) {
-            SettingScreen()
-        }
+
         composable(route = Screens.MainScreen.route) {
             MainScreen()
         }
