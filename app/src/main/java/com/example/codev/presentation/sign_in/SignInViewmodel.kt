@@ -73,8 +73,7 @@ class SignInViewModel @Inject constructor(
 
 
 
-/*
-class SigninViewmodel: ViewModel() {
+class SigninViewmodel2: ViewModel() {
 
     private val _state = MutableStateFlow(SigninState())
     val state = _state.asStateFlow()
@@ -91,4 +90,4 @@ class SigninViewmodel: ViewModel() {
     fun resetState() {
         _state.update { SigninState() }
     }
-}*/
+}

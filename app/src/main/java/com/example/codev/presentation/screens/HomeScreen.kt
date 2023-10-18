@@ -8,8 +8,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -41,12 +44,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.example.codev.R
+import com.example.codev.presentation.sign_in.UserData
 import spacefamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(
+    navController: NavController,
+    userData: UserData?
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -63,23 +71,57 @@ fun HomeScreen(navController: NavController) {
 
             var value by remember { mutableStateOf("") }
             val onValueChange: (String) -> Unit = { value = it }
-            TextField(
-                value = value,
-                onValueChange = onValueChange,
-                shape = MaterialTheme.shapes.extraLarge,
-                placeholder = { Text(text = "Search Projects", fontFamily = com.example.codev.spacefamily) },
+
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
-                colors = TextFieldDefaults.textFieldColors(
-                    unfocusedIndicatorColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent
-                ),
-                leadingIcon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null,
-                    Modifier
-                        .scale(1.3F)
-                        .padding(10.dp)) },
-            )
+                    .padding(horizontal = 16.dp)
+                ,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                TextField(
+                    value = value,
+                    onValueChange = onValueChange,
+                    shape = MaterialTheme.shapes.extraLarge,
+                    placeholder = {
+                        Text(
+                            text = "Search Projects",
+                            Modifier.align(Alignment.CenterVertically),
+                            fontFamily = com.example.codev.spacefamily,
+                            textAlign = TextAlign.Center,
+                        )
+                    },
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                        .width(330.dp)
+                    ,
+                    colors = TextFieldDefaults.textFieldColors(
+                        unfocusedIndicatorColor = Color.Transparent,
+                        focusedIndicatorColor = Color.Transparent
+                    ),
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Outlined.Search, contentDescription = null,
+                            Modifier
+                                .scale(1.3F)
+                                .padding(10.dp)
+                        )
+                    },
+                )
+
+                if(userData?.profilePicture != null) {
+                    AsyncImage(
+                        model = userData?.profilePicture,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .padding(2.dp)
+                            .padding(start = 8.dp)
+                            .height(55.dp)
+                            .clip(CircleShape)
+                            .align(Alignment.CenterVertically)
+                    )
+                }
+            }
 
             OutlinedCard(
                 onClick = { /*TODO*/ },
@@ -103,7 +145,7 @@ fun HomeScreen(navController: NavController) {
                     )
                     Text(
 
-                        text ="A collaborative space for developers " +
+                        text = "A collaborative space for developers " +
                                 "to find and list their undergoing projects " +
                                 "and ideas to be worked on and seek for team " +
                                 "members with requirements.",
@@ -131,8 +173,7 @@ fun HomeScreen(navController: NavController) {
                             .align(Alignment.Start)
                             .clip(shape = MaterialTheme.shapes.extraLarge)
                             .background(color = Color.Cyan)
-                        /*.background(color = Color.LightGray)*/
-                        ,
+                        /*.background(color = Color.LightGray)*/,
                         horizontalArrangement = Arrangement.SpaceBetween
 
                     ) {
@@ -141,7 +182,11 @@ fun HomeScreen(navController: NavController) {
                             modifier = Modifier
                                 .padding(vertical = 12.dp, horizontal = 16.dp)
                         ) {
-                            Text(text = "View Project", fontFamily = spacefamily, fontWeight = FontWeight.Bold)
+                            Text(
+                                text = "View Project",
+                                fontFamily = spacefamily,
+                                fontWeight = FontWeight.Bold
+                            )
                         }
 
                         OutlinedButton(
@@ -149,8 +194,15 @@ fun HomeScreen(navController: NavController) {
                             modifier = Modifier
                                 .padding(vertical = 12.dp, horizontal = 16.dp)
                         ) {
-                            Icon(imageVector = Icons.Filled.Info, contentDescription = "info", Modifier.padding(end = 5.dp))
-                            Text(text = "Inquire", fontFamily = spacefamily, /*fontWeight = FontWeight.Bold*/)
+                            Icon(
+                                imageVector = Icons.Filled.Info,
+                                contentDescription = "info",
+                                Modifier.padding(end = 5.dp)
+                            )
+                            Text(
+                                text = "Inquire",
+                                fontFamily = spacefamily, /*fontWeight = FontWeight.Bold*/
+                            )
                         }
                     }
                 }
@@ -166,7 +218,8 @@ fun HomeScreen(navController: NavController) {
                         .fillMaxWidth()
                         .padding(20.dp)
                 ) {
-                    Text(text = "Notesy",
+                    Text(
+                        text = "Notesy",
                         fontFamily = spacefamily,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
@@ -175,10 +228,11 @@ fun HomeScreen(navController: NavController) {
                             .padding(8.dp)
                             .align(Alignment.CenterHorizontally)
                     )
-                    Text(text ="A collaborative space for developers " +
-                            "to find and list their undergoing projects " +
-                            "and ideas to be worked on and seek for team " +
-                            "members with requirements.",
+                    Text(
+                        text = "A collaborative space for developers " +
+                                "to find and list their undergoing projects " +
+                                "and ideas to be worked on and seek for team " +
+                                "members with requirements.",
                         fontFamily = spacefamily,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Normal,
@@ -188,7 +242,8 @@ fun HomeScreen(navController: NavController) {
                             .align(Alignment.CenterHorizontally)
 
                     )
-                    Image(painter = painterResource(id = R.drawable.concept),
+                    Image(
+                        painter = painterResource(id = R.drawable.concept),
                         contentDescription = "project image",
                         modifier = Modifier
                             .fillMaxWidth()
@@ -201,12 +256,16 @@ fun HomeScreen(navController: NavController) {
                             .padding(vertical = 16.dp)
                             .align(Alignment.CenterHorizontally)
                     ) {
-                        Text(text = "View Project", fontFamily = spacefamily, fontWeight = FontWeight.Bold)
+                        Text(
+                            text = "View Project",
+                            fontFamily = spacefamily,
+                            fontWeight = FontWeight.Bold
+                        )
                     }
                 }
             }
-            OutlinedCard(
-                onClick = { /*TODO*/ },
+            /*OutlinedCard(
+                onClick = { *//*TODO*//* },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(20.dp)
@@ -246,7 +305,7 @@ fun HomeScreen(navController: NavController) {
                             .align(Alignment.CenterHorizontally)
                     )
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { *//*TODO*//* },
                         modifier = Modifier
                             .padding(vertical = 16.dp)
                             .align(Alignment.CenterHorizontally)
@@ -256,7 +315,7 @@ fun HomeScreen(navController: NavController) {
                 }
             }
             OutlinedCard(
-                onClick = { /*TODO*/ },
+                onClick = { *//*TODO*//* },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(20.dp)
@@ -296,7 +355,7 @@ fun HomeScreen(navController: NavController) {
                             .align(Alignment.CenterHorizontally)
                     )
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { *//*TODO*//* },
                         modifier = Modifier
                             .padding(vertical = 16.dp)
                             .align(Alignment.CenterHorizontally)
@@ -305,6 +364,8 @@ fun HomeScreen(navController: NavController) {
                     }
                 }
             }
+        }*/
+
         }
 
 

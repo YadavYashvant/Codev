@@ -51,10 +51,12 @@ val spacefamily = FontFamily(
 @Composable
 fun SignInScreen(
     viewModel: SignInViewModel = hiltViewModel(),
+    onSignInClick: () -> Unit,
     navController: NavController
 ) {
 
     val googleSignInState = viewModel.googleState.value
+
 
 
     val launcher =
@@ -236,7 +238,12 @@ fun SignInScreen(
                         .padding(top = 10.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    IconButton(onClick = {
+                    IconButton(
+                        onClick = onSignInClick,
+
+                        /*{
+
+
                         val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                             .requestEmail()
                             .requestIdToken(context.getString(R.string.client_id))
@@ -246,7 +253,7 @@ fun SignInScreen(
 
                         launcher.launch(googleSingInClient.signInIntent)
 
-                    }) {
+                    }*/) {
                         Icon(
                             painter = painterResource(id = R.drawable.google),
                             contentDescription = "Google Icon",

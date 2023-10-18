@@ -17,6 +17,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.codev.presentation.sign_in.UserData
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,7 +36,11 @@ fun MainScreen() {
 
         NavHost(navController = navController, startDestination = "Home") {
             composable("Home") {
-                HomeScreen(navController)
+                HomeScreen(navController, UserData(
+                    "1",
+                    "Yashvant",
+                    "https://avatars.githubusercontent.com/u/56132780?v=4"
+                ))
             }
             composable("Projects") {
                 ProjectScreen()
