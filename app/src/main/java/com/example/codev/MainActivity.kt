@@ -61,6 +61,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.codev.Navigation.Screens
+import com.example.codev.animations.EnterAnimation
 import com.example.codev.presentation.daos.UserDao
 import com.example.codev.presentation.models.User
 import com.example.codev.presentation.screens.AddprojectScreen
@@ -115,7 +116,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-
                     val navController = rememberNavController()
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
@@ -128,31 +128,44 @@ class MainActivity : ComponentActivity() {
 
                         NavHost(navController = navController, startDestination = "Home") {
                             composable("Home") {
-                                HomeScreen(navController, UserData(
-                                    "1",
-                                    "Yashvant",
-                                    "https://avatars.githubusercontent.com/u/56132780?v=4"
-                                )
-                                )
+                                EnterAnimation {
+                                    HomeScreen(navController, UserData(
+                                        "1",
+                                        "Yashvant",
+                                        "https://avatars.githubusercontent.com/u/56132780?v=4"
+                                    )
+                                    )
+                                }
                             }
                             composable("Projects") {
-                                ProjectScreen()
+                                EnterAnimation {
+                                    ProjectScreen()
+                                }
+
                             }
                             composable("Notifications") {
-                                NotificationScreen()
+                                EnterAnimation {
+                                    NotificationScreen()
+                                }
                             }
                             composable("Settings") {
-                                SettingScreen()
+                                EnterAnimation {
+                                    SettingScreen()
+                                }
                             }
                             composable("addproject") {
                                 Text("Add Project",
                                     fontFamily = com.example.codev.spacefamily,
                                     fontSize = 30.sp, fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.fillMaxSize().padding(bottom = 10.dp),
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .padding(bottom = 10.dp),
                                     textAlign = TextAlign.Center
                                 )
 
-                                AddprojectScreen()
+                                EnterAnimation {
+                                    AddprojectScreen()
+                                }
                             }
                         }
 
