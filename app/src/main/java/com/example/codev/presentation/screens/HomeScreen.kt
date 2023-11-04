@@ -1,24 +1,19 @@
 package com.example.codev.presentation.screens
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.MutableTransitionState
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.shrinkVertically
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
@@ -27,6 +22,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
@@ -46,6 +42,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -54,12 +51,15 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.codev.R
+import com.example.codev.presentation.sign_in.UserData
+import com.example.codev.presentation.sign_in.fontfamily
 import spacefamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     navController: NavController,
+    userData: UserData?,
 ) {
     Box(
         modifier = Modifier
@@ -75,8 +75,52 @@ fun HomeScreen(
                 .padding(vertical = 16.dp)
         ) {
 
+
+
             var value by remember { mutableStateOf("") }
             val onValueChange: (String) -> Unit = { value = it }
+
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+                    .padding(horizontal = 32.dp, vertical = 50.dp)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 50.dp)
+                    ,
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    if(userData?.profilePicture != null) {
+                        AsyncImage(
+                            model = userData?.profilePicture, contentDescription = null,
+                            modifier = Modifier
+                                .size(150.dp)
+                                .clip(CircleShape),
+                            contentScale = ContentScale.Crop
+                        )
+
+                        Spacer(modifier = Modifier.height(20.dp))
+                    }
+
+                    if(userData?.username != null) {
+                        Text(
+                            text = userData.username,
+                            textAlign = TextAlign.Center,
+                            fontSize = 25.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            fontFamily = fontfamily
+                        )
+                        Spacer(modifier = Modifier.height(20.dp))
+                    }
+                    /*OutlinedButton(*//*onClick = onSignOut*//*) {
+                        Text(text = "Sign out")
+                    }*/
+                }
+            }
 
             Row(
                 modifier = Modifier
@@ -99,7 +143,7 @@ fun HomeScreen(
                     },
                     modifier = Modifier
                         .align(Alignment.CenterVertically)
-                        .width(330.dp)
+                        .fillMaxWidth()
                     ,
                     colors = TextFieldDefaults.textFieldColors(
                         unfocusedIndicatorColor = Color.Transparent,
