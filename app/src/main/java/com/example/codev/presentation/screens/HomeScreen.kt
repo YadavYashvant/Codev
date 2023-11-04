@@ -84,7 +84,8 @@ fun HomeScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
-                    .padding(horizontal = 32.dp, vertical = 50.dp)
+                    .padding(horizontal = 32.dp)
+                    .padding(bottom = 48.dp)
             ) {
                 Column(
                     modifier = Modifier
