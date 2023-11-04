@@ -54,14 +54,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.codev.R
-import com.example.codev.presentation.sign_in.UserData
 import spacefamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     navController: NavController,
-    userData: UserData?
 ) {
     Box(
         modifier = Modifier
@@ -116,19 +114,6 @@ fun HomeScreen(
                         )
                     },
                 )
-
-                if(userData?.profilePicture != null) {
-                    AsyncImage(
-                        model = userData?.profilePicture,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .padding(2.dp)
-                            .padding(start = 8.dp)
-                            .height(55.dp)
-                            .clip(CircleShape)
-                            .align(Alignment.CenterVertically)
-                    )
-                }
             }
 
             OutlinedCard(
@@ -272,107 +257,6 @@ fun HomeScreen(
                     }
                 }
             }
-            /*OutlinedCard(
-                onClick = { *//*TODO*//* },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(20.dp)
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp)
-                ) {
-                    Text(text = "Notesy",
-                        fontFamily = spacefamily,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
-                    Text(text ="A collaborative space for developers " +
-                            "to find and list their undergoing projects " +
-                            "and ideas to be worked on and seek for team " +
-                            "members with requirements.",
-                        fontFamily = spacefamily,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Normal,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .align(Alignment.CenterHorizontally)
-
-                    )
-                    Image(painter = painterResource(id = R.drawable.concept),
-                        contentDescription = "project image",
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 16.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
-                    Button(
-                        onClick = { *//*TODO*//* },
-                        modifier = Modifier
-                            .padding(vertical = 16.dp)
-                            .align(Alignment.CenterHorizontally)
-                    ) {
-                        Text(text = "View Project", fontFamily = spacefamily, fontWeight = FontWeight.Bold)
-                    }
-                }
-            }
-            OutlinedCard(
-                onClick = { *//*TODO*//* },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(20.dp)
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp)
-                ) {
-                    Text(text = "Notesy",
-                        fontFamily = spacefamily,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
-                    Text(text ="A collaborative space for developers " +
-                            "to find and list their undergoing projects " +
-                            "and ideas to be worked on and seek for team " +
-                            "members with requirements.",
-                        fontFamily = spacefamily,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Normal,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .align(Alignment.CenterHorizontally)
-
-                    )
-                    Image(painter = painterResource(id = R.drawable.concept),
-                        contentDescription = "project image",
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 16.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
-                    Button(
-                        onClick = { *//*TODO*//* },
-                        modifier = Modifier
-                            .padding(vertical = 16.dp)
-                            .align(Alignment.CenterHorizontally)
-                    ) {
-                        Text(text = "View Project", fontFamily = spacefamily, fontWeight = FontWeight.Bold)
-                    }
-                }
-            }
-        }*/
 
         }
 

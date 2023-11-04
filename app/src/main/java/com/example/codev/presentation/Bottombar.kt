@@ -77,7 +77,6 @@ navController: NavController
         mutableStateOf(0)
     }
 
-
     NavigationBar {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
@@ -92,7 +91,7 @@ navController: NavController
                 },
                 alwaysShowLabel = false,
                 icon = {
-                    BadgedBox(
+                    /*BadgedBox(
                         badge = {
                             if (item.badgeCount != null) {
                                 Badge {
@@ -102,14 +101,14 @@ navController: NavController
                                 Badge()
                             }
                         }
-                    ) {
+                    ) {*/
                         Icon(
                             imageVector = if (index == selectedItemIndex) {
                                 item.selectedIcon
                             } else item.unselectedIcon,
                             contentDescription = item.title
                         )
-                    }
+
                 })
         }
     }
