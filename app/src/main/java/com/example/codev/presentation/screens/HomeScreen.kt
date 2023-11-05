@@ -302,8 +302,6 @@ fun HomeScreen(
             }
 
         }
-
-
         ExtendedFloatingActionButton(
             onClick = {
                       navController.navigate("addproject")
