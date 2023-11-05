@@ -51,7 +51,7 @@ fun ProfileScreen(
         NavHost(navController = navController, startDestination = "Home") {
             composable("Home") {
                 EnterAnimation {
-                    HomeScreen(navController, userData)
+                    HomeScreen(navController, userData, onSignOut)
                 }
             }
             composable("Projects") {

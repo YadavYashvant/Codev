@@ -12,12 +12,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Info
@@ -61,6 +59,7 @@ import spacefamily
 fun HomeScreen(
     navController: NavController,
     userData: UserData?,
+    onSignOut: () -> Unit,
 ) {
     Box(
         modifier = Modifier
@@ -80,18 +79,18 @@ fun HomeScreen(
 
             LazyColumn{
                 item {
-
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
                             .wrapContentHeight()
                             .padding(horizontal = 32.dp)
-                            .padding(bottom = 48.dp)
+                            .padding(bottom = 25.dp)
+                            .clip(MaterialTheme.shapes.extraLarge)
                     ) {
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(vertical = 50.dp)
+                                .padding(vertical = 25.dp)
                             ,
                             verticalArrangement = Arrangement.Center,
                             horizontalAlignment = Alignment.CenterHorizontally
@@ -100,12 +99,12 @@ fun HomeScreen(
                                 AsyncImage(
                                     model = userData?.profilePicture, contentDescription = null,
                                     modifier = Modifier
-                                        .size(200.dp)
-                                        .clip(CircleShape),
+                                        .size(125.dp)
+                                        .clip(MaterialTheme.shapes.extraLarge),
                                     contentScale = ContentScale.Crop
                                 )
 
-                                Spacer(modifier = Modifier.height(20.dp))
+                                Spacer(modifier = Modifier.height(10.dp))
                             }
 
                             if(userData?.username != null) {
@@ -116,14 +115,18 @@ fun HomeScreen(
                                     fontWeight = FontWeight.SemiBold,
                                     fontFamily = fontfamily
                                 )
-                                Spacer(modifier = Modifier.height(20.dp))
+                                Spacer(modifier = Modifier.height(10.dp))
                             }
-                            /*OutlinedButton(*//*onClick = onSignOut*//*) {
+                            OutlinedButton(
+                                onClick = onSignOut,
+                                modifier = Modifier
+                                    ,
+                                shape = RoundedCornerShape(10.dp)
+                            ) {
                         Text(text = "Sign out")
-                    }*/
+                    }
                         }
                     }
-
                     TextField(
                         value = value,
                         onValueChange = onValueChange,
@@ -137,7 +140,7 @@ fun HomeScreen(
                         },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 16.dp)
+                            .padding(horizontal = 30.dp)
                         ,
                         colors = TextFieldDefaults.textFieldColors(
                             unfocusedIndicatorColor = Color.Transparent,
