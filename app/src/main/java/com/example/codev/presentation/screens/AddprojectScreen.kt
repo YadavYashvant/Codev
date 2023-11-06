@@ -34,13 +34,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.codev.R
 import com.example.codev.firestore_feature.addToFirebase
 import com.example.codev.firestore_feature.readFromFirebase
+import com.example.codev.firestore_feature.userList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddprojectScreen() {
+fun AddprojectScreen(
+    navController: NavController
+) {
 
     val context = LocalContext.current
     Box(
@@ -154,7 +158,10 @@ fun AddprojectScreen() {
                           skill.value,
                           context
                       )
-                readFromFirebase()
+
+                navController.popBackStack()
+
+
             },
             modifier = Modifier
                 .align(Alignment.BottomEnd)

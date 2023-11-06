@@ -50,6 +50,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedTextField
@@ -62,6 +63,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.TextFieldValue
@@ -74,6 +76,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.codev.firestore_feature.readFromFirebase
 import com.example.codev.presentation.daos.UserDao
 import com.example.codev.presentation.models.User
 import com.example.codev.presentation.profile.ProfileScreen
@@ -89,6 +92,8 @@ val spacefamily = FontFamily(
     Font(R.font.spacebold/*, FontWeight.Bold*/),
     Font(R.font.spaceregular/*, FontWeight.Light*/),
 )
+
+var reading = true
 
 /*@AndroidEntryPoint*/
 class MainActivity : ComponentActivity() {
@@ -110,8 +115,19 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
                     val navController = rememberNavController()
+
+                    readFromFirebase()
+
+                    if(reading) {
+                        Box(
+                            modifier = Modifier.fillMaxSize()
+
+                        ) {
+                            LinearProgressIndicator(modifier = Modifier.align(Alignment.TopCenter).fillMaxWidth().padding(vertical = 32.dp, horizontal = 8.dp))
+                        }
+                    }
+
 
                     NavHost(navController = navController, startDestination = "sign_in") {
                         composable("sign_in") {

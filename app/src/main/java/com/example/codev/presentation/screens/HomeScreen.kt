@@ -54,6 +54,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.codev.R
+import com.example.codev.firestore_feature.readFromFirebase
 import com.example.codev.firestore_feature.userList
 import com.example.codev.presentation.sign_in.UserData
 import com.example.codev.presentation.sign_in.fontfamily
@@ -66,11 +67,17 @@ fun HomeScreen(
     userData: UserData?,
     onSignOut: () -> Unit,
 ) {
+
+    /*if(userList.isEmpty()) {
+        readFromFirebase()
+    }*/
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             /*.padding(bottom = 66.dp, top = 66.dp)*/
     ) {
+
 
         /*val scrollState = rememberScrollState()*/
         Column(
@@ -174,7 +181,7 @@ fun HomeScreen(
                         ),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = 10.dp)
+                            .padding(vertical = 10.dp, horizontal = 20.dp)
                     ) {
 
                         Column(
@@ -234,16 +241,29 @@ fun HomeScreen(
 
                             Spacer(modifier = Modifier.height(8.dp))
                             userList[index]?.skill?.let {
-                                Text(
-                                    text = it,
-                                    fontSize = 18.sp,
-                                    fontWeight = FontWeight.Bold,
+                                Card(
                                     modifier = Modifier
                                         .fillMaxWidth()
-                                        .padding(4.dp)
+                                        .padding(8.dp)
+                                        .background(
+                                            color = Color.LightGray,
+                                            shape = RoundedCornerShape(40.dp)
+                                        )
                                         .align(Alignment.CenterHorizontally),
-                                    fontFamily = spacefamily,
-                                )
+
+                                ) {
+                                    Text(
+                                        text = it,
+                                        fontSize = 18.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(8.dp)
+                                            .align(Alignment.CenterHorizontally)
+                                        ,
+                                        fontFamily = spacefamily,
+                                    )
+                                }
                             }
 
                             Spacer(modifier = Modifier.height(16.dp))
