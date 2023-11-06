@@ -12,8 +12,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -22,6 +25,7 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
@@ -50,6 +54,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.codev.R
+import com.example.codev.firestore_feature.userList
 import com.example.codev.presentation.sign_in.UserData
 import com.example.codev.presentation.sign_in.fontfamily
 import spacefamily
@@ -156,9 +161,99 @@ fun HomeScreen(
                         },
                     )
                 }
-                items(10){
+
+            /*LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+            ) {*/
+                itemsIndexed(userList) { index, item ->
+
                     OutlinedCard(
-                        onClick = { /*TODO*/ },
+                        elevation = CardDefaults.cardElevation(
+                            defaultElevation = 1.dp
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 10.dp)
+                    ) {
+
+                        Column(
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp)
+                                .wrapContentHeight()
+                        ) {
+                            Spacer(modifier = Modifier.width(8.dp))
+
+                            userList[index]?.name?.let {
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(4.dp)
+                                        .align(Alignment.CenterHorizontally),
+                                    horizontalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                    Text(
+                                        text = it,
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(4.dp),
+                                        fontFamily = spacefamily,
+                                    )
+
+                                    /*var opendeletedialog by remember {
+                                        mutableStateOf(false)
+                                    }
+
+                                    IconButton(onClick = {
+                                        opendeletedialog = true
+                                    }) {
+                                        if(opendeletedialog) {
+                                            com.example.crud_compose_firestore.presentation.ui.Dialog(index, userList)
+                                        }
+                                        Icon(imageVector = Icons.Filled.Delete, contentDescription = null)
+                                    }*/
+                                }
+                            }
+                            Spacer(modifier = Modifier.height(8.dp))
+
+                            userList[index]?.branch?.let {
+                                Text(
+                                    text = it,
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(4.dp)
+                                        .align(Alignment.CenterHorizontally),
+                                    fontFamily = spacefamily,
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.height(8.dp))
+                            userList[index]?.skill?.let {
+                                Text(
+                                    text = it,
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(4.dp)
+                                        .align(Alignment.CenterHorizontally),
+                                    fontFamily = spacefamily,
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.height(16.dp))
+
+
+                    }
+                }
+                /*items(10){
+                    OutlinedCard(
+                        onClick = { *//*TODO*//* },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(20.dp)
@@ -207,12 +302,12 @@ fun HomeScreen(
                                     .align(Alignment.Start)
                                     .clip(shape = MaterialTheme.shapes.extraLarge)
                                     .background(color = Color.Cyan)
-                                /*.background(color = Color.LightGray)*/,
+                                *//*.background(color = Color.LightGray)*//*,
                                 horizontalArrangement = Arrangement.SpaceBetween
 
                             ) {
                                 Button(
-                                    onClick = { /*TODO*/ },
+                                    onClick = { *//*TODO*//* },
                                     modifier = Modifier
                                         .padding(vertical = 12.dp, horizontal = 16.dp)
                                 ) {
@@ -224,7 +319,7 @@ fun HomeScreen(
                                 }
 
                                 OutlinedButton(
-                                    onClick = { /*TODO*/ },
+                                    onClick = { *//*TODO*//* },
                                     modifier = Modifier
                                         .padding(vertical = 12.dp, horizontal = 16.dp)
                                 ) {
@@ -235,70 +330,14 @@ fun HomeScreen(
                                     )
                                     Text(
                                         text = "Inquire",
-                                        fontFamily = spacefamily, /*fontWeight = FontWeight.Bold*/
+                                        fontFamily = spacefamily, *//*fontWeight = FontWeight.Bold*//*
                                     )
                                 }
                             }
                         }
                     }
-                }
+                }*/
             }
-            OutlinedCard(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(20.dp)
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp)
-                ) {
-                    Text(
-                        text = "Notesy",
-                        fontFamily = spacefamily,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
-                    Text(
-                        text = "A collaborative space for developers " +
-                                "to find and list their undergoing projects " +
-                                "and ideas to be worked on and seek for team " +
-                                "members with requirements.",
-                        fontFamily = spacefamily,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Normal,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .align(Alignment.CenterHorizontally)
-
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.concept),
-                        contentDescription = "project image",
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 16.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
-                    Button(
-                        onClick = { /*TODO*/ },
-                        modifier = Modifier
-                            .padding(vertical = 16.dp)
-                            .align(Alignment.CenterHorizontally)
-                    ) {
-                        Text(
-                            text = "View Project",
-                            fontFamily = spacefamily,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-                }
             }
 
         }

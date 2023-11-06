@@ -63,6 +63,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -111,6 +112,7 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     val navController = rememberNavController()
+
                     NavHost(navController = navController, startDestination = "sign_in") {
                         composable("sign_in") {
                             val  viewModel = viewModel<SigninViewmodel>()
@@ -121,7 +123,6 @@ class MainActivity : ComponentActivity() {
                                     navController.navigate("user_screen")
                                 }
                             }
-
 
                             val launcher = rememberLauncherForActivityResult(
                                 contract = ActivityResultContracts.StartIntentSenderForResult(),
@@ -191,54 +192,6 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                     }
-
-                    /*val navController = rememberNavController()
-                    Scaffold(
-                        modifier = Modifier.fillMaxSize(),
-
-                        bottomBar = {
-                            BottomNavigation(navController = navController)
-                        }
-                    ) {
-                        NavHost(navController = navController, startDestination = "Home") {
-                            composable("Home") {
-                                EnterAnimation {
-                                    HomeScreen(navController)
-                                }
-                            }
-                            composable("Projects") {
-                                EnterAnimation {
-                                    ProjectScreen()
-                                }
-
-                            }
-                            composable("Notifications") {
-                                EnterAnimation {
-                                    NotificationScreen()
-                                }
-                            }
-                            composable("Settings") {
-                                EnterAnimation {
-                                    SettingScreen()
-                                }
-                            }
-                            composable("addproject") {
-                                Text("Add Project",
-                                    fontFamily = com.example.codev.spacefamily,
-                                    fontSize = 30.sp, fontWeight = FontWeight.Bold,
-                                    modifier = Modifier
-                                        .fillMaxSize()
-                                        .padding(bottom = 10.dp),
-                                    textAlign = TextAlign.Center
-                                )
-
-                                EnterAnimation {
-                                    AddprojectScreen()
-                                }
-                            }
-                        }
-
-                    }*/
                 }
             }
         }
