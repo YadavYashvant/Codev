@@ -85,50 +85,5 @@ fun ProfileScreen(
                 }
             }
         }
-
     }
-
-    /*
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .padding(horizontal = 32.dp, vertical = 50.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 50.dp)
-            ,
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            if(userData?.profilePicture != null) {
-                AsyncImage(
-                    model = userData?.profilePicture, contentDescription = null,
-                    modifier = Modifier
-                        .size(150.dp)
-                        .clip(CircleShape),
-                    contentScale = ContentScale.Crop
-                )
-
-                Spacer(modifier = Modifier.height(20.dp))
-            }
-
-            if(userData?.username != null) {
-                Text(
-                    text = userData.username,
-                    textAlign = TextAlign.Center,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    fontFamily = fontfamily
-                )
-                Spacer(modifier = Modifier.height(20.dp))
-            }
-            OutlinedButton(onClick = onSignOut) {
-                Text(text = "Sign out")
-            }
-        }
-    }
-    */
 }

@@ -89,7 +89,9 @@ fun HomeScreen(
             var value by remember { mutableStateOf("") }
             val onValueChange: (String) -> Unit = { value = it }
 
-            LazyColumn{
+            LazyColumn(
+                modifier = Modifier.padding(top = 40.dp, bottom = 100.dp)
+            ){
                 item {
                     Card(
                         modifier = Modifier
@@ -366,12 +368,11 @@ fun HomeScreen(
                       navController.navigate("addproject")
             },
             modifier = Modifier
-                .padding(bottom = 100.dp, end = 16.dp)
+                .padding(bottom = 120.dp, end = 32.dp)
                 .align(Alignment.BottomEnd)
-
         ) {
-            Icon(imageVector = Icons.Filled.Add, contentDescription = "add project", Modifier.padding(end = 5.dp))
-            Text(text = "Add Project", fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 18.sp, )
+            Icon(imageVector = Icons.Filled.Add, contentDescription = "add project", Modifier.padding(end = 5.dp).scale(1.5F))
+           /* Text(text = "Add Project", fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 18.sp, )*/
         }
 
     }
