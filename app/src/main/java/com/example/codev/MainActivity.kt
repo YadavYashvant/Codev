@@ -57,8 +57,6 @@ var reading = true
 /*@AndroidEntryPoint*/
 class MainActivity : ComponentActivity() {
 
-    
-
     private val googleAuthUiClient by lazy {
         GoogleAuthUiClient(
             context = applicationContext,
@@ -72,7 +70,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             WindowCompat.setDecorFitsSystemWindows(window,false)
-
+            readFromFirebase()
             var darkTheme by remember { mutableStateOf(false) }
 
             CodevTheme(
@@ -84,8 +82,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-
-                    readFromFirebase()
 
                     if(reading) {
                         Box(
