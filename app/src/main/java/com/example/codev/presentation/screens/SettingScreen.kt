@@ -12,7 +12,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -50,7 +52,35 @@ import com.example.codev.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingScreen(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
-    val scrollState = rememberScrollState()
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.surface),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        ThemeSwitcher(
+            darkTheme = darkTheme,
+            onClick = onThemeUpdated
+        )
+        /*Spacer(modifier = Modifier.height(20.dp))
+        ThemeSwitcher(
+            darkTheme = darkTheme,
+            size = 100.dp,
+            padding = 5.dp,
+            onClick = onThemeUpdated
+        )
+        Spacer(modifier = Modifier.height(20.dp))
+        ThemeSwitcher(
+            darkTheme = darkTheme,
+            size = 50.dp,
+            padding = 5.dp,
+            onClick = onThemeUpdated
+        )*/
+    }
+
+    /*val scrollState = rememberScrollState()
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -66,7 +96,7 @@ fun SettingScreen(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
                 .fillMaxWidth()
         ) {
             OutlinedCard(
-                onClick = { /*TODO*/ },
+                onClick = { *//*TODO*//* },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 10.dp, horizontal = 15.dp)
@@ -81,7 +111,7 @@ fun SettingScreen(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
                     horizontalArrangement = Arrangement.SpaceBetween
 
                 ) {
-                    IconToggleButton(checked = false, onCheckedChange = { /*TODO*/ }) {
+                    IconToggleButton(checked = false, onCheckedChange = { *//*TODO*//* }) {
                         Image(painter = painterResource(id = R.drawable.theme), contentDescription = "theme", Modifier.scale(.75F))
                     }
                     Text(text = "Default Theme", fontFamily = spacefamily, fontSize = 24.sp)
@@ -90,17 +120,17 @@ fun SettingScreen(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
                         darkTheme = darkTheme,
                         onClick = onThemeUpdated
                     )
-                    /*Button(onClick = { *//*TODO*//* }) {
+                    *//*Button(onClick = { *//**//*TODO*//**//* }) {
                         Icon(imageVector = Icons.Outlined.Check, contentDescription = null, Modifier.padding(end = 3.dp))
                         Text(text = "Light", fontFamily = spacefamily)
-                    }*/
+                    }*//*
                 }
 
 
 
             }
         }
-    }
+    }*/
 }
 
 @Composable
@@ -117,7 +147,7 @@ fun ThemeSwitcher(
 ) {
     val offset by animateDpAsState(
         targetValue = if (darkTheme) 0.dp else size,
-        animationSpec = animationSpec
+        animationSpec = animationSpec, label = ""
     )
 
     Box(modifier = Modifier
@@ -151,7 +181,8 @@ fun ThemeSwitcher(
             ) {
                 Icon(
                     modifier = Modifier.size(iconSize),
-                    imageVector = Icons.Default.AddCircle,
+                    painter = painterResource(id = R.drawable.nightmode),
+
                     contentDescription = "Theme Icon",
                     tint = if (darkTheme) MaterialTheme.colorScheme.secondaryContainer
                     else MaterialTheme.colorScheme.primary
@@ -163,7 +194,7 @@ fun ThemeSwitcher(
             ) {
                 Icon(
                     modifier = Modifier.size(iconSize),
-                    imageVector = Icons.Default.AccountCircle,
+                    painter = painterResource(id = R.drawable.lightmode),
                     contentDescription = "Theme Icon",
                     tint = if (darkTheme) MaterialTheme.colorScheme.primary
                     else MaterialTheme.colorScheme.secondaryContainer
