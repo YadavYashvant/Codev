@@ -70,7 +70,6 @@ class MainActivity : ComponentActivity() {
         )
     }
 
-
     @OptIn(ExperimentalMaterial3Api::class)
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {

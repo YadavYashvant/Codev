@@ -63,69 +63,6 @@ fun NotificationScreen() {
                 }
 
             }
-            Card(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 10.dp, horizontal = 15.dp)
-                    .background(color = Color.Transparent)
-
-            ) {
-                Row(
-                    Modifier.padding(horizontal = 10.dp, vertical = 20.dp)
-                ) {
-                    IconToggleButton(checked = false, onCheckedChange = { /*TODO*/ }) {
-                        Icon(Icons.Filled.Notifications, contentDescription = "Info")
-                    }
-                    Column {
-                        Text(text = "You have a new notification", fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 24.sp)
-                        Text(text = "Make a new project today to get started!", fontFamily = spacefamily)
-                    }
-                }
-
-            }
-            Card(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 10.dp, horizontal = 15.dp)
-                    .background(color = Color.Transparent)
-
-            ) {
-                Row(
-                    Modifier.padding(horizontal = 10.dp, vertical = 20.dp)
-                ) {
-                    IconToggleButton(checked = false, onCheckedChange = { /*TODO*/ }) {
-                        Icon(Icons.Filled.Notifications, contentDescription = "Info")
-                    }
-                    Column {
-                        Text(text = "You have a new notification", fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 24.sp)
-                        Text(text = "Make a new project today to get started!", fontFamily = spacefamily)
-                    }
-                }
-
-            }
-            Card(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 10.dp, horizontal = 15.dp)
-                    .background(color = Color.Transparent)
-
-            ) {
-                Row(
-                    Modifier.padding(horizontal = 10.dp, vertical = 20.dp)
-                ) {
-                    IconToggleButton(checked = false, onCheckedChange = { /*TODO*/ }) {
-                        Icon(Icons.Filled.Notifications, contentDescription = "Info")
-                    }
-                    Column {
-                        Text(text = "You have a new notification", fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 24.sp)
-                        Text(text = "Make a new project today to get started!", fontFamily = spacefamily)
-                    }
-                }
-
-            }
         }
     }
 }
