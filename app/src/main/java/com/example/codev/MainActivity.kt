@@ -57,6 +57,12 @@ var reading = true
 /*@AndroidEntryPoint*/
 class MainActivity : ComponentActivity() {
 
+    override fun onStart() {
+        super.onStart()
+        reading = true
+        readFromFirebase()
+    }
+
     private val googleAuthUiClient by lazy {
         GoogleAuthUiClient(
             context = applicationContext,
@@ -64,11 +70,6 @@ class MainActivity : ComponentActivity() {
         )
     }
 
-    override fun onStart() {
-        super.onStart()
-        reading = true
-        readFromFirebase()
-    }
 
     @OptIn(ExperimentalMaterial3Api::class)
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
