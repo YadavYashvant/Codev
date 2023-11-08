@@ -9,7 +9,6 @@ import kotlinx.coroutines.launch
 
 class UserDao {
     val db = Firebase.firestore
-
     val userCollection = db.collection("users")
     fun addUser(user: User?) {
         user?.let {
