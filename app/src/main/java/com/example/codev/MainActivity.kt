@@ -63,6 +63,13 @@ class MainActivity : ComponentActivity() {
             onTapClient = Identity.getSignInClient(applicationContext)
         )
     }
+
+    override fun onStart() {
+        super.onStart()
+        reading = true
+        readFromFirebase()
+    }
+
     @OptIn(ExperimentalMaterial3Api::class)
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,7 +77,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             WindowCompat.setDecorFitsSystemWindows(window,false)
-            readFromFirebase()
+
             var darkTheme by remember { mutableStateOf(false) }
 
             CodevTheme(
