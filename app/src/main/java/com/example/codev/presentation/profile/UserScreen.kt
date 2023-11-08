@@ -36,8 +36,10 @@ val fontfamily = FontFamily(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(
+    darkTheme: Boolean,
     userData: UserData?,
-    onSignOut: () -> Unit
+    onSignOut: () -> Unit,
+    onThemeUpdated: () -> Unit
 ) {
 
     val navController = rememberNavController()
@@ -67,7 +69,7 @@ fun ProfileScreen(
             }
             composable("Settings") {
                 EnterAnimation {
-                    SettingScreen()
+                    SettingScreen(darkTheme, onThemeUpdated)
                 }
             }
             composable("addproject") {
