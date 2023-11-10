@@ -7,5 +7,5 @@ class deleteFromFirebase() {
     //to delete data from firebase
     val db = Firebase.firestore
     val usercollection = db.collection("users")
-
+    
 }
