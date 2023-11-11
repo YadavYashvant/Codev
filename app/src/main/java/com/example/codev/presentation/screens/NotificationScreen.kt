@@ -57,7 +57,7 @@ fun NotificationScreen() {
                         Icon(Icons.Filled.Notifications, contentDescription = "Info")
                     }
                     Column {
-                        Text(text = "You have a new notification", fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 24.sp)
+                        Text(text = "Welcome to Codev", fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 24.sp)
                         Text(text = "Make a new project today to get started!", fontFamily = spacefamily)
                     }
                 }
