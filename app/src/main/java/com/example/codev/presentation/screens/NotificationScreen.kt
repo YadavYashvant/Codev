@@ -34,7 +34,7 @@ fun NotificationScreen() {
             .fillMaxHeight()
             .verticalScroll(scrollState)
     ) {
-        Text(text = "Notifications", modifier = Modifier
+        Text(text = "Bookmarks", modifier = Modifier
             .padding(16.dp)
             .align(Alignment.CenterHorizontally), fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 36.sp)
 

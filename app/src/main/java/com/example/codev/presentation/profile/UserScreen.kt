@@ -62,7 +62,7 @@ fun ProfileScreen(
                 }
 
             }
-            composable("Notifications") {
+            composable("Bookmarks") {
                 EnterAnimation {
                     NotificationScreen()
                 }

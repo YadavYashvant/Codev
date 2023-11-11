@@ -61,7 +61,7 @@ navController: NavController
             /*badgeCount = 0*/
         ),
         BottomNavigationItem(
-            title = "Notifications",
+            title = "Bookmarks",
             selectedIcon = Icons.Filled.Notifications,
             unselectedIcon = Icons.Outlined.Notifications,
             hasNews = true,
