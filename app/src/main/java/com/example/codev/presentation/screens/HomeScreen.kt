@@ -1,6 +1,5 @@
 package com.example.codev.presentation.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,16 +13,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.outlined.Search
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -46,19 +41,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.example.codev.R
-import com.example.codev.firestore_feature.readFromFirebase
 import com.example.codev.firestore_feature.userList
 import com.example.codev.presentation.sign_in.UserData
 import com.example.codev.presentation.sign_in.fontfamily
-import spacefamily
+import com.example.codev.presentation.spacefamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -286,7 +278,7 @@ fun HomeScreen(
                 .align(Alignment.BottomEnd)
         ) {
             Icon(imageVector = Icons.Filled.Add, contentDescription = "add project", Modifier.padding(end = 5.dp).scale(1.5F))
-           /* Text(text = "Add Project", fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 18.sp, )*/
+           /* Text(text = "Add Project", fontFamily = com.example.codev.presentation.getSpacefamily, fontWeight = FontWeight.Bold, fontSize = 18.sp, )*/
         }
 
     }

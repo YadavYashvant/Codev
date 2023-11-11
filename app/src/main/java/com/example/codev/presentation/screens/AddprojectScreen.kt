@@ -74,7 +74,7 @@ fun AddprojectScreen(
         ) {
 
             /*Text(text = "Add Project",
-                fontFamily = com.example.codev.spacefamily,
+                fontFamily = com.example.codev.com.example.codev.presentation.getSpacefamily,
                 fontSize = 30.sp, fontWeight = FontWeight.Bold,
                 modifier = Modifier.fillMaxSize().padding(bottom = 10.dp),
                 textAlign = TextAlign.Center)*/

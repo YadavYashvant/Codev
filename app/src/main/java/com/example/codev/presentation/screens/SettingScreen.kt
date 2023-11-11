@@ -89,7 +89,7 @@ fun SettingScreen(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
     ) {
         Text(text = "Settings", modifier = Modifier
             .padding(16.dp)
-            .align(Alignment.CenterHorizontally), fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 36.sp)
+            .align(Alignment.CenterHorizontally), fontFamily = com.example.codev.presentation.getSpacefamily, fontWeight = FontWeight.Bold, fontSize = 36.sp)
 
         Column(
             modifier = Modifier
@@ -114,7 +114,7 @@ fun SettingScreen(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
                     IconToggleButton(checked = false, onCheckedChange = { *//*TODO*//* }) {
                         Image(painter = painterResource(id = R.drawable.theme), contentDescription = "theme", Modifier.scale(.75F))
                     }
-                    Text(text = "Default Theme", fontFamily = spacefamily, fontSize = 24.sp)
+                    Text(text = "Default Theme", fontFamily = com.example.codev.presentation.getSpacefamily, fontSize = 24.sp)
 
                     ThemeSwitcher(
                         darkTheme = darkTheme,
@@ -122,7 +122,7 @@ fun SettingScreen(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
                     )
                     *//*Button(onClick = { *//**//*TODO*//**//* }) {
                         Icon(imageVector = Icons.Outlined.Check, contentDescription = null, Modifier.padding(end = 3.dp))
-                        Text(text = "Light", fontFamily = spacefamily)
+                        Text(text = "Light", fontFamily = com.example.codev.presentation.getSpacefamily)
                     }*//*
                 }
 

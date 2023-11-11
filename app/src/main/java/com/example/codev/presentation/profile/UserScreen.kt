@@ -1,6 +1,6 @@
 package com.example.codev.presentation.profile
 
-import BottomNavigation
+import com.example.codev.presentation.BottomNavigation
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
