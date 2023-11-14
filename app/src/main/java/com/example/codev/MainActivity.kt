@@ -89,12 +89,11 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-
                     if(reading) {
                         Box(
                             modifier = Modifier.fillMaxSize()
                         ) {
-                            LinearProgressIndicator(modifier = Modifier.align(Alignment.TopCenter).fillMaxWidth().padding(vertical = 32.dp, horizontal = 8.dp))
+                            LinearProgressIndicator(modifier = Modifier.align(Alignment.TopCenter).fillMaxWidth().padding(vertical = 32.dp, horizontal = 8.dp), progress = 0.5f)
                         }
                     }
 

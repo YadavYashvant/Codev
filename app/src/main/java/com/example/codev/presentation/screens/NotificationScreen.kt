@@ -61,7 +61,6 @@ fun NotificationScreen() {
                         Text(text = "Make a new project today to get started!", fontFamily = spacefamily)
                     }
                 }
-
             }
         }
     }

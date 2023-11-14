@@ -64,73 +64,7 @@ fun SettingScreen(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
             darkTheme = darkTheme,
             onClick = onThemeUpdated
         )
-        /*Spacer(modifier = Modifier.height(20.dp))
-        ThemeSwitcher(
-            darkTheme = darkTheme,
-            size = 100.dp,
-            padding = 5.dp,
-            onClick = onThemeUpdated
-        )
-        Spacer(modifier = Modifier.height(20.dp))
-        ThemeSwitcher(
-            darkTheme = darkTheme,
-            size = 50.dp,
-            padding = 5.dp,
-            onClick = onThemeUpdated
-        )*/
     }
-
-    /*val scrollState = rememberScrollState()
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
-            .verticalScroll(scrollState)
-    ) {
-        Text(text = "Settings", modifier = Modifier
-            .padding(16.dp)
-            .align(Alignment.CenterHorizontally), fontFamily = com.example.codev.presentation.getSpacefamily, fontWeight = FontWeight.Bold, fontSize = 36.sp)
-
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-        ) {
-            OutlinedCard(
-                onClick = { *//*TODO*//* },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 10.dp, horizontal = 15.dp)
-                    .background(color = Color.Transparent)
-
-            ) {
-                Row(
-                    Modifier
-                        .padding(horizontal = 10.dp, vertical = 20.dp)
-                        .fillMaxWidth()
-                    ,
-                    horizontalArrangement = Arrangement.SpaceBetween
-
-                ) {
-                    IconToggleButton(checked = false, onCheckedChange = { *//*TODO*//* }) {
-                        Image(painter = painterResource(id = R.drawable.theme), contentDescription = "theme", Modifier.scale(.75F))
-                    }
-                    Text(text = "Default Theme", fontFamily = com.example.codev.presentation.getSpacefamily, fontSize = 24.sp)
-
-                    ThemeSwitcher(
-                        darkTheme = darkTheme,
-                        onClick = onThemeUpdated
-                    )
-                    *//*Button(onClick = { *//**//*TODO*//**//* }) {
-                        Icon(imageVector = Icons.Outlined.Check, contentDescription = null, Modifier.padding(end = 3.dp))
-                        Text(text = "Light", fontFamily = com.example.codev.presentation.getSpacefamily)
-                    }*//*
-                }
-
-
-
-            }
-        }
-    }*/
 }
 
 @Composable
