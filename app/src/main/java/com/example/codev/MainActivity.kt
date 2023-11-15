@@ -51,7 +51,7 @@ val spacefamily = FontFamily(
     Font(R.font.spaceregular/*, FontWeight.Light*/),
 )
 
-//for setting up linear progress bar at top
+//For setting up linear progress bar at top
 var reading = true
 
 /*@AndroidEntryPoint*/
@@ -122,6 +122,8 @@ class MainActivity : ComponentActivity() {
                                     }
                                 }
                             )
+
+                            //Launched effect is used to navigate to user screen when sign in is successful
 
                             LaunchedEffect(key1 = state.isSigninSuccessful) {
                                 if(state.isSigninSuccessful) {

@@ -52,7 +52,6 @@ import com.example.codev.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingScreen(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
-
     Column(
         modifier = Modifier
             .fillMaxSize()
