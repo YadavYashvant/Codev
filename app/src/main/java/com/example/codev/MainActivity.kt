@@ -46,12 +46,12 @@ import com.example.codev.presentation.sign_in.SignInScreen
 import com.example.codev.presentation.sign_in.SigninViewmodel
 import kotlinx.coroutines.launch
 
-
 val spacefamily = FontFamily(
     Font(R.font.spacebold/*, FontWeight.Bold*/),
     Font(R.font.spaceregular/*, FontWeight.Light*/),
 )
 
+//for setting up linear progress bar at top
 var reading = true
 
 /*@AndroidEntryPoint*/
