@@ -100,14 +100,15 @@ class MainActivity : ComponentActivity() {
 
                     NavHost(navController = navController, startDestination = "sign_in") {
                         composable("sign_in") {
-                            val  viewModel = viewModel<SigninViewmodel>()
-                            val state by viewModel.state.collectAsStateWithLifecycle()
 
                             LaunchedEffect(key1 = Unit) {
                                 if(googleAuthUiClient.getSignedInUser() != null) {
                                     navController.navigate("user_screen")
                                 }
                             }
+
+                            val  viewModel = viewModel<SigninViewmodel>()
+                            val state by viewModel.state.collectAsStateWithLifecycle()
 
                             val launcher = rememberLauncherForActivityResult(
                                 contract = ActivityResultContracts.StartIntentSenderForResult(),
