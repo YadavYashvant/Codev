@@ -1,5 +1,11 @@
 package com.example.codev.presentation.screens
 
+import androidx.compose.animation.core.InfiniteRepeatableSpec
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,6 +27,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
@@ -81,6 +88,17 @@ fun HomeScreen(
             var value by remember { mutableStateOf("") }
             val onValueChange: (String) -> Unit = { value = it }
 
+            val valueanim by rememberInfiniteTransition().animateFloat(
+                initialValue = 1.dp.value,
+                targetValue = 16.dp.value,
+                animationSpec = infiniteRepeatable(
+                    animation = tween(
+                        durationMillis = 1000,
+                    ),
+                    repeatMode = RepeatMode.Reverse
+                )
+            )
+
             LazyColumn(
                 modifier = Modifier.padding(top = 40.dp, bottom = 100.dp)
             ){
@@ -92,6 +110,10 @@ fun HomeScreen(
                             .padding(horizontal = 32.dp)
                             .padding(bottom = 25.dp)
                             .clip(MaterialTheme.shapes.extraLarge)
+                            ,
+                        elevation = CardDefaults.cardElevation(
+                            defaultElevation = valueanim.dp
+                        )
                     ) {
                         Column(
                             modifier = Modifier
@@ -171,7 +193,7 @@ fun HomeScreen(
 
                     OutlinedCard(
                         elevation = CardDefaults.cardElevation(
-                            defaultElevation = 1.dp
+                            defaultElevation = valueanim.dp
                         ),
                         modifier = Modifier
                             .fillMaxWidth()
@@ -277,7 +299,10 @@ fun HomeScreen(
                 .padding(bottom = 120.dp, end = 32.dp)
                 .align(Alignment.BottomEnd)
         ) {
-            Icon(imageVector = Icons.Filled.Add, contentDescription = "add project", Modifier.padding(end = 5.dp).scale(1.5F))
+            Icon(imageVector = Icons.Filled.Add, contentDescription = "add project",
+                Modifier
+                    .padding(end = 5.dp)
+                    .scale(1.5F))
            /* Text(text = "Add Project", fontFamily = com.example.codev.presentation.getSpacefamily, fontWeight = FontWeight.Bold, fontSize = 18.sp, )*/
         }
 

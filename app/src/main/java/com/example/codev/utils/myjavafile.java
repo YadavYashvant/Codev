@@ -1,4 +1,4 @@
-package com.example.codev;
+package com.example.codev.utils;
 
 public class myjavafile {
     public static void main(String[] args) {
