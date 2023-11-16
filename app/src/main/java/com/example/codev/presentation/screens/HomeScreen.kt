@@ -88,16 +88,6 @@ fun HomeScreen(
             var value by remember { mutableStateOf("") }
             val onValueChange: (String) -> Unit = { value = it }
 
-            val valueanim by rememberInfiniteTransition().animateFloat(
-                initialValue = 1.dp.value,
-                targetValue = 16.dp.value,
-                animationSpec = infiniteRepeatable(
-                    animation = tween(
-                        durationMillis = 1000,
-                    ),
-                    repeatMode = RepeatMode.Reverse
-                )
-            )
 
             LazyColumn(
                 modifier = Modifier.padding(top = 40.dp, bottom = 100.dp)
@@ -112,7 +102,7 @@ fun HomeScreen(
                             .clip(MaterialTheme.shapes.extraLarge)
                             ,
                         elevation = CardDefaults.cardElevation(
-                            defaultElevation = valueanim.dp
+                            defaultElevation = 16.dp
                         )
                     ) {
                         Column(
@@ -193,7 +183,7 @@ fun HomeScreen(
 
                     OutlinedCard(
                         elevation = CardDefaults.cardElevation(
-                            defaultElevation = valueanim.dp
+                            defaultElevation = 16.dp
                         ),
                         modifier = Modifier
                             .fillMaxWidth()
