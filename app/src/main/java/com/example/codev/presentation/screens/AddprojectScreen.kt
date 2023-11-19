@@ -11,10 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -30,22 +28,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.codev.R
 import com.example.codev.firestore_feature.addToFirebase
-import com.example.codev.firestore_feature.readFromFirebase
-import com.example.codev.firestore_feature.userList
+import com.example.codev.presentation.sign_in.UserData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddprojectScreen(
-    navController: NavController
+    navController: NavController,
+    userData: UserData?
 ) {
-
     val context = LocalContext.current
     Box(
         modifier = Modifier
@@ -156,6 +152,7 @@ fun AddprojectScreen(
                           name.value,
                           branch.value,
                           skill.value,
+                          userData?.username,
                           context
                       )
 

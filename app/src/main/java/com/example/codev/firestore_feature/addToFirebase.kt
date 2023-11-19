@@ -9,12 +9,13 @@ fun addToFirebase(
     name: String,
     branch: String,
     skill: String,
+    uid: String?,
     context: Context
 ) {
     val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     val dbUser: CollectionReference = db.collection("users")
-    val users = Post(name, branch, skill)
+    val users = Post(name, branch, skill, uid)
 
     dbUser.add(users)
         .addOnSuccessListener { documentReference ->

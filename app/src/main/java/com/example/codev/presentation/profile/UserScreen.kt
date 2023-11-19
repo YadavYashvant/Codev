@@ -83,7 +83,7 @@ fun ProfileScreen(
                 )
 
                 EnterAnimation {
-                    AddprojectScreen(navController)
+                    AddprojectScreen(navController, userData)
                 }
             }
         }

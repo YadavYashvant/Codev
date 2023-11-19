@@ -272,18 +272,22 @@ fun HomeScreen(
                                 }
                             }
 
-                            Spacer(modifier = Modifier.height(16.dp))
+                            Spacer(modifier = Modifier.height(20.dp))
 
                             userList[index]?.uid?.let {
                                 Text(
-                                    text = "UID: $it",
+                                    text = "POSTED BY - $it",
                                     fontSize = 18.sp,
-                                    fontWeight = FontWeight.Bold,
+                                    fontWeight = FontWeight.Light,
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .padding(4.dp)
+                                        .background(
+                                            color = Color.LightGray,
+                                            shape = RoundedCornerShape(40.dp))
                                         .align(Alignment.CenterHorizontally),
                                     fontFamily = spacefamily,
+
                                 )
                             }
 
