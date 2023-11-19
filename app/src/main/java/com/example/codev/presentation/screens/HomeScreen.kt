@@ -48,6 +48,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -282,16 +283,12 @@ fun HomeScreen(
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .padding(4.dp)
-                                        .background(
-                                            color = Color.LightGray,
-                                            shape = RoundedCornerShape(40.dp))
                                         .align(Alignment.CenterHorizontally),
                                     fontFamily = spacefamily,
+                                    fontStyle = FontStyle.Italic
 
                                 )
                             }
-
-
                     }
                 }
             }
