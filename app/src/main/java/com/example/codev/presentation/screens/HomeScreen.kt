@@ -274,6 +274,19 @@ fun HomeScreen(
 
                             Spacer(modifier = Modifier.height(16.dp))
 
+                            userList[index]?.uid?.let {
+                                Text(
+                                    text = "UID: $it",
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(4.dp)
+                                        .align(Alignment.CenterHorizontally),
+                                    fontFamily = spacefamily,
+                                )
+                            }
+
 
                     }
                 }
