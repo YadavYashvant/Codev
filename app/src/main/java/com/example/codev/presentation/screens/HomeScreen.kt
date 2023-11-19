@@ -273,7 +273,22 @@ fun HomeScreen(
                                 }
                             }
 
-                            Spacer(modifier = Modifier.height(20.dp))
+                            Spacer(modifier = Modifier.height(25.dp))
+
+                            /*userList[index]?.uid?.let {
+                                Text(
+                                    text = "POSTED BY - $it",
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Light,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(4.dp)
+                                        .align(Alignment.CenterHorizontally),
+                                    fontFamily = spacefamily,
+                                    fontStyle = FontStyle.Italic
+
+                                )
+                            }*/
 
                             userList[index]?.uid?.let {
                                 Text(
