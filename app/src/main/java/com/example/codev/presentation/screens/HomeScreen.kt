@@ -31,6 +31,7 @@ import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedCard
@@ -77,9 +78,6 @@ fun HomeScreen(
             .fillMaxSize()
             /*.padding(bottom = 66.dp, top = 66.dp)*/
     ) {
-
-
-        /*val scrollState = rememberScrollState()*/
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -175,11 +173,7 @@ fun HomeScreen(
                         },
                     )
                 }
-
-            /*LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-            ) {*/
+                
                 itemsIndexed(userList) { index, item ->
 
                     OutlinedCard(
@@ -229,6 +223,11 @@ fun HomeScreen(
                                         }
                                         Icon(imageVector = Icons.Filled.Delete, contentDescription = null)
                                     }*/
+                                    
+                                    IconButton(onClick = { /*TODO*/ }) {
+                                        
+                                    }
+                                    
                                 }
                             }
                             Spacer(modifier = Modifier.height(8.dp))
