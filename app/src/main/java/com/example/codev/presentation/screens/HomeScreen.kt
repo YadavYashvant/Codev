@@ -73,12 +73,7 @@ fun HomeScreen(
     userData: UserData?,
     onSignOut: () -> Unit,
 ) {
-
     val mContext = LocalContext.current
-
-    /*if(userList.isEmpty()) {
-        readFromFirebase()
-    }*/
 
     Box(
         modifier = Modifier
@@ -217,21 +212,8 @@ fun HomeScreen(
                                         fontFamily = spacefamily,
                                     )
 
-                                    /*var opendeletedialog by remember {
-                                        mutableStateOf(false)
-                                    }
-
-                                    IconButton(onClick = {
-                                        opendeletedialog = true
-                                    }) {
-                                        if(opendeletedialog) {
-                                            com.example.crud_compose_firestore.presentation.ui.Dialog(index, userList)
-                                        }
-                                        Icon(imageVector = Icons.Filled.Delete, contentDescription = null)
-                                    }*/
-                                    
                                     IconButton(onClick = { /*TODO*/ }) {
-                                        
+
                                     }
                                     
                                 }
@@ -306,7 +288,6 @@ fun HomeScreen(
                                         .align(Alignment.CenterHorizontally),
                                     fontFamily = spacefamily,
                                     fontStyle = FontStyle.Italic
-
                                 )
                             }
 
@@ -326,7 +307,6 @@ fun HomeScreen(
                 }
             }
             }
-
         }
         ExtendedFloatingActionButton(
             onClick = {

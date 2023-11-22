@@ -25,3 +25,23 @@ fun readFromFirebase() {
             android.util.Log.w("TAG", "Error getting documents.", exception)
         }
 }
+
+fun readsavedFromFirebase() {
+
+        var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+        db.collection("savedposts")
+            .get()
+            .addOnSuccessListener { result ->
+
+                val list = result.documents
+                for (d in list) {
+                    val u = d.toObject(Post::class.java)
+                    savedposts.add(u)
+                }
+                reading = false
+            }
+            .addOnFailureListener { exception ->
+                android.util.Log.w("TAG", "Error getting documents.", exception)
+            }
+}

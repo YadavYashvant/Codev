@@ -38,6 +38,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.codev.firestore_feature.readFromFirebase
+import com.example.codev.firestore_feature.readsavedFromFirebase
 import com.example.codev.presentation.daos.UserDao
 import com.example.codev.presentation.models.User
 import com.example.codev.presentation.profile.ProfileScreen
@@ -61,6 +62,7 @@ class MainActivity : ComponentActivity() {
         super.onStart()
         reading = true
         readFromFirebase()
+        readsavedFromFirebase()
     }
 
     private val googleAuthUiClient by lazy {
@@ -96,7 +98,6 @@ class MainActivity : ComponentActivity() {
                             LinearProgressIndicator(modifier = Modifier.align(Alignment.TopCenter).fillMaxWidth().padding(vertical = 32.dp, horizontal = 8.dp), progress = 0.5f)
                         }
                     }
-
 
                     NavHost(navController = navController, startDestination = "sign_in") {
                         composable("sign_in") {
