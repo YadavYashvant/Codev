@@ -5,7 +5,7 @@ import com.example.codev.reading
 import com.google.firebase.firestore.FirebaseFirestore
 
 val userList = mutableListOf<Post?>()
-
+val savedposts = mutableListOf<Post?>()
 fun readFromFirebase() {
 
     var db: FirebaseFirestore = FirebaseFirestore.getInstance()

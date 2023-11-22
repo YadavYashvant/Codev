@@ -34,3 +34,32 @@ fun addToFirebase(
         }
 
 }
+
+fun addtosavedcollections(
+    name: String,
+    branch: String,
+    skill: String,
+    uid: String?,
+    context: Context
+) {
+    val db:FirebaseFirestore = FirebaseFirestore.getInstance()
+
+    val dbsavedpost : CollectionReference = db.collection("savedposts")
+    val savedposts = Post(name, branch, skill, uid)
+    dbsavedpost.add(savedposts)
+        .addOnSuccessListener { documentReference ->
+            android.widget.Toast.makeText(
+                context,
+                "Post Bookmarked successfully",
+                android.widget.Toast.LENGTH_SHORT
+            ).show()
+        }
+        .addOnFailureListener { e ->
+            android.widget.Toast.makeText(
+                context,
+                "Error saving post",
+                android.widget.Toast.LENGTH_SHORT
+            ).show()
+        }
+}
+

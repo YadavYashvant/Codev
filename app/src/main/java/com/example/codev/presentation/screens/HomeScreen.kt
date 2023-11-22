@@ -49,6 +49,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -56,6 +58,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import coil.compose.rememberAsyncImagePainter
+import com.example.codev.R
+import com.example.codev.firestore_feature.addtosavedcollections
 import com.example.codev.firestore_feature.userList
 import com.example.codev.presentation.sign_in.UserData
 import com.example.codev.presentation.sign_in.fontfamily
@@ -68,6 +73,8 @@ fun HomeScreen(
     userData: UserData?,
     onSignOut: () -> Unit,
 ) {
+
+    val mContext = LocalContext.current
 
     /*if(userList.isEmpty()) {
         readFromFirebase()
@@ -175,7 +182,6 @@ fun HomeScreen(
                 }
                 
                 itemsIndexed(userList) { index, item ->
-
                     OutlinedCard(
                         elevation = CardDefaults.cardElevation(
                             defaultElevation = 16.dp
@@ -302,6 +308,19 @@ fun HomeScreen(
                                     fontStyle = FontStyle.Italic
 
                                 )
+                            }
+
+                            Spacer(modifier = Modifier.height(8.dp))
+                            IconButton(onClick = {
+                                addtosavedcollections(
+                                    userList[index]?.name!!,
+                                    userList[index]?.branch!!,
+                                    userList[index]?.skill!!,
+                                    userList[index]?.uid,
+                                    mContext
+                                )
+                            }) {
+                                Icon(painter = painterResource(id = R.drawable.bookmark_outlined), contentDescription = null)
                             }
                     }
                 }
