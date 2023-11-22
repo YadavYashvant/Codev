@@ -19,7 +19,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.navigation.NavController
@@ -28,8 +30,8 @@ import com.example.codev.R
 
 data class BottomNavigationItem(
     val title: String,
-    val selectedIcon: ImageVector,
-    val unselectedIcon: ImageVector,
+    val selectedIcon: Painter,
+    val unselectedIcon: Painter,
     val hasNews: Boolean,
     val badgeCount: Int? = null
 )
@@ -47,27 +49,27 @@ navController: NavController
     val items = listOf(
         BottomNavigationItem(
             title = "Home",
-            selectedIcon = Icons.Filled.Home,
-            unselectedIcon = Icons.Outlined.Home,
+            selectedIcon = painterResource(id = R.drawable.home_filled),
+            unselectedIcon = painterResource(id = R.drawable.home_outlined),
             hasNews = false,
         ),
         BottomNavigationItem(
             title = "Projects",
-            selectedIcon = Icons.Filled.DateRange,
-            unselectedIcon = Icons.Outlined.DateRange,
+            selectedIcon = painterResource(id = R.drawable.baseline_menu_book_24),
+            unselectedIcon = painterResource(id = R.drawable.outline_library_books_24),
             hasNews = false,
             /*badgeCount = 0*/
         ),
         BottomNavigationItem(
             title = "Bookmarks",
-            selectedIcon = Icons.Filled.Email,
-            unselectedIcon = Icons.Outlined.MailOutline,
+            selectedIcon = painterResource(id = R.drawable.bookmark_filled),
+            unselectedIcon = painterResource(id = R.drawable.bookmark_outlined),
             hasNews = true,
         ),
         BottomNavigationItem(
             title = "Settings",
-            selectedIcon = Icons.Filled.Settings,
-            unselectedIcon = Icons.Outlined.Settings,
+            selectedIcon = painterResource(id = R.drawable.baseline_settings_24),
+            unselectedIcon = painterResource(id = R.drawable.outline_settings_24),
             hasNews = false,
         )
     )
@@ -101,7 +103,10 @@ navController: NavController
                         }
                     ) {*/
                         Icon(
-                            imageVector = if (index == selectedItemIndex) {
+                            /*imageVector = if (index == selectedItemIndex) {
+                                item.selectedIcon
+                            } else item.unselectedIcon,*/
+                            painter = if (index == selectedItemIndex) {
                                 item.selectedIcon
                             } else item.unselectedIcon,
                             contentDescription = item.title
