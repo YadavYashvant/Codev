@@ -307,6 +307,5 @@ fun HomeScreen(
                     .scale(1.5F))
            /* Text(text = "Add Project", fontFamily = com.example.codev.presentation.getSpacefamily, fontWeight = FontWeight.Bold, fontSize = 18.sp, )*/
         }
-
     }
 }
