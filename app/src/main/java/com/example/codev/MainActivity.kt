@@ -45,6 +45,7 @@ import com.example.codev.presentation.profile.ProfileScreen
 import com.example.codev.presentation.sign_in.GoogleAuthUiClient
 import com.example.codev.presentation.sign_in.SignInScreen
 import com.example.codev.presentation.sign_in.SigninViewmodel
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 val spacefamily = FontFamily(
@@ -61,8 +62,10 @@ class MainActivity : ComponentActivity() {
     override fun onStart() {
         super.onStart()
         reading = true
+        
         readFromFirebase()
         readsavedFromFirebase()
+
     }
 
     private val googleAuthUiClient by lazy {
