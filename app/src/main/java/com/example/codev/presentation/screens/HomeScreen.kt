@@ -1,11 +1,5 @@
 package com.example.codev.presentation.screens
 
-import androidx.compose.animation.core.InfiniteRepeatableSpec
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -27,7 +21,6 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
@@ -58,7 +51,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import coil.compose.rememberAsyncImagePainter
 import com.example.codev.R
 import com.example.codev.firestore_feature.addtosavedcollections
 import com.example.codev.firestore_feature.userList
@@ -84,14 +76,13 @@ fun HomeScreen(
             modifier = Modifier
                 .fillMaxSize()
                 /*.verticalScroll(scrollState)*/
-                .padding(vertical = 16.dp)
         ) {
             var value by remember { mutableStateOf("") }
             val onValueChange: (String) -> Unit = { value = it }
 
 
             LazyColumn(
-                modifier = Modifier.padding(top = 40.dp, bottom = 80.dp)
+                modifier = Modifier.padding(top = 5.dp, bottom = 80.dp)
             ){
                 item {
                     Card(

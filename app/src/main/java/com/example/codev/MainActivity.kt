@@ -33,6 +33,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.toArgb
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -81,7 +82,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            WindowCompat.setDecorFitsSystemWindows(window,false)
+            val defaultStatusBarColor = MaterialTheme.colorScheme.background.toArgb()
+            var statusBarColor by remember {
+                mutableStateOf(defaultStatusBarColor)
+            }
+            window.statusBarColor = statusBarColor
+            //WindowCompat.setDecorFitsSystemWindows(window,false)
 
             var darkTheme by remember { mutableStateOf(false) }
 
@@ -98,7 +104,10 @@ class MainActivity : ComponentActivity() {
                         Box(
                             modifier = Modifier.fillMaxSize()
                         ) {
-                            LinearProgressIndicator(modifier = Modifier.align(Alignment.TopCenter).fillMaxWidth().padding(vertical = 32.dp, horizontal = 8.dp), progress = 0.5f)
+                            LinearProgressIndicator(modifier = Modifier
+                                .align(Alignment.TopCenter)
+                                .fillMaxWidth()
+                                .padding(vertical = 32.dp, horizontal = 8.dp), progress = 0.5f)
                         }
                     }
 
@@ -168,6 +177,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("user_screen") {
                             ProfileScreen(
+                                onStatusBarColorChange = { color ->
+                                    statusBarColor = color.toArgb()
+                                },
                                 darkTheme = darkTheme,
                                 onThemeUpdated = { darkTheme = !darkTheme },
                                 userData = googleAuthUiClient.getSignedInUser(),

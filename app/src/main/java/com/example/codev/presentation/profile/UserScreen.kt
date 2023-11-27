@@ -5,10 +5,12 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -39,7 +41,8 @@ fun ProfileScreen(
     darkTheme: Boolean,
     userData: UserData?,
     onSignOut: () -> Unit,
-    onThemeUpdated: () -> Unit
+    onThemeUpdated: () -> Unit,
+    onStatusBarColorChange:(color: Color) -> Unit
 ) {
 
     val navController = rememberNavController()
@@ -52,27 +55,32 @@ fun ProfileScreen(
     ) {
         NavHost(navController = navController, startDestination = "Home") {
             composable("Home") {
+                onStatusBarColorChange(MaterialTheme.colorScheme.background)
                 EnterAnimation {
                     HomeScreen(navController, userData, onSignOut)
                 }
             }
             composable("Projects") {
+                onStatusBarColorChange(MaterialTheme.colorScheme.background)
                 EnterAnimation {
                     ProjectScreen()
                 }
 
             }
             composable("Bookmarks") {
+                onStatusBarColorChange(MaterialTheme.colorScheme.background)
                 EnterAnimation {
                     NotificationScreen()
                 }
             }
             composable("Settings") {
+                onStatusBarColorChange(MaterialTheme.colorScheme.background)
                 EnterAnimation {
                     SettingScreen(darkTheme, onThemeUpdated)
                 }
             }
             composable("addproject") {
+                onStatusBarColorChange(MaterialTheme.colorScheme.background)
                 Text("Add Project",
                     fontFamily = com.example.codev.spacefamily,
                     fontSize = 30.sp, fontWeight = FontWeight.Bold,
