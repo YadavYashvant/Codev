@@ -82,7 +82,7 @@ fun HomeScreen(
 
 
             LazyColumn(
-                modifier = Modifier.padding(top = 5.dp, bottom = 80.dp)
+                modifier = Modifier.padding(top = 10.dp, bottom = 80.dp)
             ){
                 item {
                     Card(
@@ -289,7 +289,7 @@ fun HomeScreen(
                       navController.navigate("addproject")
             },
             modifier = Modifier
-                .padding(bottom = 125.dp, end = 36.dp)
+                .padding(bottom = 100.dp, end = 36.dp)
                 .align(Alignment.BottomEnd)
         ) {
             Icon(imageVector = Icons.Filled.Add, contentDescription = "add project",

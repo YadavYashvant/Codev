@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.codev.firestore_feature.model.Post
 import kotlinx.coroutines.launch
 
+
 class DataViewModel: ViewModel() {
 
     val state = mutableStateOf(Post())

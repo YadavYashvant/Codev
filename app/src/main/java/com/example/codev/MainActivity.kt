@@ -66,7 +66,6 @@ class MainActivity : ComponentActivity() {
         
         readFromFirebase()
         readsavedFromFirebase()
-
     }
 
     private val googleAuthUiClient by lazy {
