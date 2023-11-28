@@ -1,5 +1,6 @@
 package com.example.codev.firestore_feature
 
+import androidx.compose.runtime.mutableStateListOf
 import com.example.codev.firestore_feature.model.Post
 import com.example.codev.reading
 import com.google.firebase.firestore.FirebaseFirestore
@@ -7,7 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException
 import kotlinx.coroutines.tasks.await
 
 val userList = mutableListOf<Post?>()
-val savedposts = mutableListOf<Post?>()
+val savedposts = mutableStateListOf<Post?>()
 fun readFromFirebase(): MutableList<Post?> {
 
     var db: FirebaseFirestore = FirebaseFirestore.getInstance()

@@ -80,7 +80,9 @@ fun HomeScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .padding(bottom = 80.dp)
             /*.padding(bottom = 66.dp, top = 66.dp)*/
+
     ) {
         Column(
             modifier = Modifier
@@ -408,7 +410,7 @@ fun HomeScreen(
                       navController.navigate("addproject")
             },
             modifier = Modifier
-                .padding(bottom = 100.dp, end = 36.dp)
+                .padding(bottom = 40.dp, end = 36.dp)
                 .align(Alignment.BottomEnd)
         ) {
             Icon(imageVector = Icons.Filled.Add, contentDescription = "add project",

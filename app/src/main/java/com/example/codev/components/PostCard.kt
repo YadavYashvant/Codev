@@ -81,6 +81,8 @@ fun PostCard(
     post: Post
 ) {
 
+    val mContext = LocalContext.current
+
     OutlinedCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 16.dp
@@ -176,13 +178,13 @@ fun PostCard(
 
             Spacer(modifier = Modifier.height(8.dp))
             IconButton(onClick = {
-                /*addtosavedcollections(
-                    userList[index]?.name!!,
-                    userList[index]?.branch!!,
-                    userList[index]?.skill!!,
-                    userList[index]?.uid,
+                addtosavedcollections(
+                    post.name!!,
+                    post.branch!!,
+                    post.skill!!,
+                    post.uid,
                     mContext
-                )*/
+                )
             }) {
                 Icon(
                     painter = painterResource(id = R.drawable.bookmark_outlined),

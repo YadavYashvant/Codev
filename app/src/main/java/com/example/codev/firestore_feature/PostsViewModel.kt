@@ -24,6 +24,13 @@ class PostsViewModel @Inject constructor(
 
     init {
         getPosts()
+        getsavedPosts()
+    }
+
+    private fun getsavedPosts() {
+        viewModelScope.launch {
+            readsavedFromFirebase()
+        }
     }
 
     private fun getPosts() {
