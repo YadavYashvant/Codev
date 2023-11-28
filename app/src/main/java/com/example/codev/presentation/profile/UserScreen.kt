@@ -17,11 +17,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.codev.R
 import com.example.codev.animations.EnterAnimation
+import com.example.codev.data.DataOrException
+import com.example.codev.firestore_feature.PostsViewModel
+import com.example.codev.firestore_feature.model.Post
 import com.example.codev.presentation.screens.AddprojectScreen
 import com.example.codev.presentation.screens.HomeScreen
 import com.example.codev.presentation.screens.NotificationScreen
@@ -42,7 +46,9 @@ fun ProfileScreen(
     userData: UserData?,
     onSignOut: () -> Unit,
     onThemeUpdated: () -> Unit,
-    onStatusBarColorChange:(color: Color) -> Unit
+    onStatusBarColorChange: (color: Color) -> Unit,
+    postsviewModel: PostsViewModel,
+    dataOrException: DataOrException<List<Post>, Exception>
 ) {
 
     val navController = rememberNavController()
@@ -57,7 +63,7 @@ fun ProfileScreen(
             composable("Home") {
                 onStatusBarColorChange(MaterialTheme.colorScheme.background)
                 EnterAnimation {
-                    HomeScreen(navController, userData, onSignOut)
+                    HomeScreen(navController, userData, onSignOut, postsviewModel, dataOrException)
                 }
             }
             composable("Projects") {

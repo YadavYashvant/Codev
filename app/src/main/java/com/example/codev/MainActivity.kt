@@ -24,6 +24,7 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.LinearProgressIndicator
@@ -34,19 +35,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.toArgb
-import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.codev.firestore_feature.readFromFirebase
-import com.example.codev.firestore_feature.readsavedFromFirebase
+import com.example.codev.firestore_feature.PostsViewModel
 import com.example.codev.presentation.daos.UserDao
 import com.example.codev.presentation.models.User
 import com.example.codev.presentation.profile.ProfileScreen
 import com.example.codev.presentation.sign_in.GoogleAuthUiClient
 import com.example.codev.presentation.sign_in.SignInScreen
 import com.example.codev.presentation.sign_in.SigninViewmodel
-import kotlinx.coroutines.coroutineScope
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
 val spacefamily = FontFamily(
@@ -57,16 +57,19 @@ val spacefamily = FontFamily(
 //For setting up linear progress bar at top
 var reading = true
 
-/*@AndroidEntryPoint*/
+@AndroidEntryPoint
+@ExperimentalCoroutinesApi
 class MainActivity : ComponentActivity() {
 
-    override fun onStart() {
+    private val postsviewModel: PostsViewModel by viewModels()
+
+    /*override fun onStart() {
         super.onStart()
         reading = true
         
         readFromFirebase()
         readsavedFromFirebase()
-    }
+    }*/
 
     private val googleAuthUiClient by lazy {
         GoogleAuthUiClient(
@@ -89,6 +92,8 @@ class MainActivity : ComponentActivity() {
             //WindowCompat.setDecorFitsSystemWindows(window,false)
 
             var darkTheme by remember { mutableStateOf(false) }
+
+            val dataOrException = postsviewModel.data.value
 
             CodevTheme(
                 darkTheme = darkTheme,
@@ -179,6 +184,8 @@ class MainActivity : ComponentActivity() {
                                 onStatusBarColorChange = { color ->
                                     statusBarColor = color.toArgb()
                                 },
+                                postsviewModel = postsviewModel,
+                                dataOrException = dataOrException,
                                 darkTheme = darkTheme,
                                 onThemeUpdated = { darkTheme = !darkTheme },
                                 userData = googleAuthUiClient.getSignedInUser(),
