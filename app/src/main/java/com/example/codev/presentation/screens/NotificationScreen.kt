@@ -62,6 +62,8 @@ import org.intellij.lang.annotations.Language
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NotificationScreen() {
+
+    /*
     val valueanim by rememberInfiniteTransition(label = "").animateFloat(
         initialValue = 1.dp.value,
         targetValue = 16.dp.value,
@@ -71,7 +73,7 @@ fun NotificationScreen() {
             ),
             repeatMode = RepeatMode.Reverse
         ), label = ""
-    )
+    )*/
 
     val scrollState = rememberScrollState()
     Column(

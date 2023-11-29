@@ -91,7 +91,6 @@ fun PostCard(
             .fillMaxWidth()
             .padding(vertical = 10.dp, horizontal = 20.dp)
     ) {
-
         Column(
             Modifier
                 .fillMaxWidth()
@@ -193,68 +192,4 @@ fun PostCard(
             }
         }
     }
-
-    /*Card(
-        shape = MaterialTheme.shapes.small,
-        modifier = Modifier
-            .padding(
-                start = 8.dp,
-                end = 8.dp,
-                top = 4.dp,
-                bottom = 4.dp
-            )
-            .fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 16.dp
-        )
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(all = 12.dp)
-        ){
-            post.name?.let { name ->
-                Text(
-                    text = name,
-                    modifier = Modifier
-                        .fillMaxWidth(0.85f)
-                        .wrapContentWidth(Alignment.Start),
-                    color = Color.DarkGray,
-                    fontSize = 25.sp
-                )
-            }
-            post.branch?.let { branch ->
-                Text(
-                    text = branch,
-                    modifier = Modifier
-                        .wrapContentWidth(Alignment.End)
-                    ,
-                    color = Color.DarkGray,
-                    fontSize = 25.sp
-                )
-            }
-            post.skill?.let { skill ->
-
-                Text(
-                    text = skill,
-                    modifier = Modifier
-                        .wrapContentWidth(Alignment.End)
-                    ,
-                    color = Color.DarkGray,
-                    fontSize = 25.sp
-                )
-
-            }
-
-            post.uid?.let { uid->
-                Text(
-                    text = uid,
-                    modifier = Modifier.wrapContentWidth(Alignment.End),
-                    color = Color.DarkGray,
-                    fontSize = 20.sp
-
-                )
-            }
-        }
-    }*/
 }
