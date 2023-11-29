@@ -5,4 +5,5 @@ data class Post(
     val branch: String = "",
     val skill: String = "",
     val uid: String? = "",
+    var isSaved : Boolean = false,
 )

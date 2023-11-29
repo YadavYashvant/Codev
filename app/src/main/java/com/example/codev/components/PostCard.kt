@@ -80,7 +80,6 @@ import com.example.codev.presentation.spacefamily
 fun PostCard(
     post: Post
 ) {
-
     val mContext = LocalContext.current
 
     OutlinedCard(
@@ -184,11 +183,20 @@ fun PostCard(
                     post.uid,
                     mContext
                 )
+                post.isSaved = true
             }) {
-                Icon(
-                    painter = painterResource(id = R.drawable.bookmark_outlined),
-                    contentDescription = null
-                )
+                if (post.isSaved == true) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.bookmark_outlined),
+                        contentDescription = null
+                    )
+                }
+                else {
+                    Icon(
+                        painter = painterResource(id = R.drawable.bookmark_filled),
+                        contentDescription = null
+                    )
+                }
             }
         }
     }

@@ -83,7 +83,7 @@ fun NotificationScreen() {
            /* .verticalScroll(scrollState)*/
     ) {
         Text(text = "Bookmarks", modifier = Modifier
-            .padding(16.dp)
+            .padding(8.dp)
             .align(Alignment.CenterHorizontally), fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 36.sp)
 
         LazyColumn(
@@ -207,40 +207,6 @@ fun NotificationScreen() {
                 }
             }
         }
-
-
-
-
-
-        /*Column(
-            modifier = Modifier
-                .fillMaxWidth()
-        ) {
-            Card(
-                onClick = { *//*TODO*//* },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 10.dp, horizontal = 15.dp)
-                    .background(color = Color.Transparent),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = valueanim.dp
-                ),
-                shape = CardDefaults.shape
-
-            ) {
-                Row(
-                    Modifier.padding(horizontal = 10.dp, vertical = 20.dp)
-                ) {
-                    IconToggleButton(checked = false, onCheckedChange = { *//*TODO*//* }) {
-                        Icon(Icons.Filled.Notifications, contentDescription = "Info")
-                    }
-                    Column {
-                        Text(text = "Welcome to Codev", fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 24.sp)
-                        Text(text = "Make a new project today to get started!", fontFamily = spacefamily)
-                    }
-                }
-            }
-        }*/
 
     }
 }
