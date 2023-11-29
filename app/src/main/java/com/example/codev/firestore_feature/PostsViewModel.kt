@@ -36,7 +36,7 @@ class PostsViewModel @Inject constructor(
     private fun getPosts() {
         viewModelScope.launch {
             loading.value = true
-            data.value = repository.getPostsFronFirestore()
+            data.value = repository.getPostsFromFirestore()
             loading.value = false
         }
     }
