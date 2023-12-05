@@ -91,27 +91,12 @@ navController: NavController
                 },
                 alwaysShowLabel = false,
                 icon = {
-                    /*BadgedBox(
-                        badge = {
-                            if (item.badgeCount != null) {
-                                Badge {
-                                    Text(text = item.badgeCount.toString())
-                                }
-                            } else if (item.hasNews) {
-                                Badge()
-                            }
-                        }
-                    ) {*/
                         Icon(
-                            /*imageVector = if (index == selectedItemIndex) {
-                                item.selectedIcon
-                            } else item.unselectedIcon,*/
                             painter = if (index == selectedItemIndex) {
                                 item.selectedIcon
                             } else item.unselectedIcon,
                             contentDescription = item.title
                         )
-
                 })
         }
     }
