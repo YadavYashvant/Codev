@@ -1,6 +1,7 @@
 package com.example.codev.presentation.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,12 +11,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -60,6 +63,7 @@ import com.example.codev.firestore_feature.PostsViewModel
 import com.example.codev.firestore_feature.addtosavedcollections
 import com.example.codev.firestore_feature.model.Post
 import com.example.codev.firestore_feature.userList
+import com.example.codev.presentation.FilterChipHome
 import com.example.codev.presentation.sign_in.UserData
 import com.example.codev.presentation.sign_in.fontfamily
 import com.example.codev.presentation.spacefamily
@@ -175,6 +179,23 @@ fun HomeScreen(
                                 )
                             },
                         )
+
+                        Spacer(modifier = Modifier.height(20.dp))
+
+                        val chipList = listOf("Latest", "Popular", "Top Rated", "Upcoming", "Now Playing", "Trending")
+                        val scrollstate = rememberScrollState()
+                        Row(
+                            modifier = Modifier
+                                .padding(horizontal = 16.dp)
+                                .paddingFromBaseline(bottom = 16.dp, top = 32.dp)
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                                .horizontalScroll(scrollstate)
+                        ) {
+                            for (i in 0..5) {
+                                FilterChipHome(chipList[i])
+                            }
+                        }
                     }
                     items(
                         items = posts
