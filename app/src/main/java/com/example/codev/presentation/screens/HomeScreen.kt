@@ -93,9 +93,8 @@ fun HomeScreen(
     userData: UserData?,
     onSignOut: () -> Unit,
     postsviewModel: PostsViewModel,
-    dataOrException: DataOrException<List<Post>, Exception>,
+    dataOrException: DataOrException<List<Post>, Exception>
 ) {
-    //val mContext = LocalContext.current
     val posts = dataOrException.data
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     Scaffold(
@@ -112,7 +111,8 @@ fun HomeScreen(
                     Text(
                         "Codev",
                         maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
+                        fontSize = 25.sp
                     )
                 },
                 navigationIcon = {
@@ -134,7 +134,6 @@ fun HomeScreen(
             )
         }
     ) {
-
         Box(
             modifier = Modifier
                 .fillMaxSize()
