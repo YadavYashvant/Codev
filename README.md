@@ -24,15 +24,8 @@ A collaborative space for developers to find and list their undergoing projects 
 |-------------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------|
 
 ### Dark Theme
-| ![IMG-20230904-WA0008](https://github.com/YadavYashvant/Wordly/assets/113130559/5dba54f5-f0d6-4a6d-882c-c6d24e875c31) | ![IMG-20230904-WA0007](https://github.com/YadavYashvant/Wordly/assets/113130559/52386974-99e7-45ea-bcee-d7d17e7f22f7) | ![IMG-20230904-WA0007](https://github.com/YadavYashvant/Wordly/assets/113130559/52386974-99e7-45ea-bcee-d7d17e7f22f7) |
-|-------------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------|
-
-### Dark Theme
-| ![codev_d1](https://github.com/YadavYashvant/Codev/assets/113130559/2d8d13b7-339b-44dd-ba33-b2e5161a5596) | ![codev_d2](https://github.com/YadavYashvant/Codev/assets/113130559/35ea00d7-60e4-41bd-b71c-a1470757438b) |
-![codev_d3](https://github.com/YadavYashvant/Codev/assets/113130559/439ee6ae-99e5-423b-8711-82bb41cf1c26) | ![codev_d4](https://github.com/YadavYashvant/Codev/assets/113130559/d8fb4a5b-7641-4bbd-86e6-8cbbf4bd97f6) |
+| ![codev_d1](https://github.com/YadavYashvant/Codev/assets/113130559/2d8d13b7-339b-44dd-ba33-b2e5161a5596) | ![codev_d2](https://github.com/YadavYashvant/Codev/assets/113130559/35ea00d7-60e4-41bd-b71c-a1470757438b) | ![codev_d3](https://github.com/YadavYashvant/Codev/assets/113130559/439ee6ae-99e5-423b-8711-82bb41cf1c26) | ![codev_d4](https://github.com/YadavYashvant/Codev/assets/113130559/d8fb4a5b-7641-4bbd-86e6-8cbbf4bd97f6) |
 |-------------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------|
-
-
 
 
 ## Run Locally
