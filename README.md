@@ -16,12 +16,17 @@ A collaborative space for developers to find and list their undergoing projects 
 - Minimal material UI
 - Social Media
 
-
 ## Screenshots
-
-
-| ![WhatsApp Image 2023-10-01 at 11 16 58_2519320e](https://github.com/YadavYashvant/Codev/assets/113130559/20390b4d-e73c-48e1-87cf-f8ebe7511e1c)| ![WhatsApp Image 2023-10-01 at 11 16 58_727bd81c](https://github.com/YadavYashvant/Codev/assets/113130559/ead497ee-dd7a-4846-b123-4f0e56240b34) | ![WhatsApp Image 2023-10-01 at 11 16 58_872653fd](https://github.com/YadavYashvant/Codev/assets/113130559/e52b3833-24ab-4647-a90c-c5859cd4a29a) |
+### Light Theme
+| ![IMG-20230904-WA0006](https://github.com/YadavYashvant/Wordly/assets/113130559/7eac49f4-ab42-446d-8118-b46210c1bbc0) | ![IMG-20230904-WA0009](https://github.com/YadavYashvant/Wordly/assets/113130559/22c7014e-b556-44d8-ac04-c5f45757332e) | ![IMG-20230904-WA0010](https://github.com/YadavYashvant/Wordly/assets/113130559/d3d3b061-5a88-447a-9568-943cd542607d) |
 |-------------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------|
+
+### Dark Theme
+| ![IMG-20230904-WA0008](https://github.com/YadavYashvant/Wordly/assets/113130559/5dba54f5-f0d6-4a6d-882c-c6d24e875c31) | ![IMG-20230904-WA0007](https://github.com/YadavYashvant/Wordly/assets/113130559/52386974-99e7-45ea-bcee-d7d17e7f22f7) | ![IMG-20230904-WA0007](https://github.com/YadavYashvant/Wordly/assets/113130559/52386974-99e7-45ea-bcee-d7d17e7f22f7) |
+|-------------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------|
+
+
+
 
 ## Run Locally
 
