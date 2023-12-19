@@ -18,7 +18,7 @@ A collaborative space for developers to find and list their undergoing projects 
 
 ## Screenshots
 ### Light Theme
-| [codev_l1](https://github.com/YadavYashvant/Codev/assets/113130559/b78d193e-9d13-4fb6-bcbf-c14ab09530cd) | ![codev_l2](https://github.com/YadavYashvant/Codev/assets/113130559/5e77d2a3-c3f2-4a63-b5ec-2ef934cac5db) | ![codev_l3](https://github.com/YadavYashvant/Codev/assets/113130559/2f3a9fe3-056f-40c8-a702-42c219f5d711) | ![codev_l4](https://github.com/YadavYashvant/Codev/assets/113130559/f562603f-d55c-4731-881d-665e4ccf7d36)
+| ![codev_l1](https://github.com/YadavYashvant/Codev/assets/113130559/b78d193e-9d13-4fb6-bcbf-c14ab09530cd) | ![codev_l2](https://github.com/YadavYashvant/Codev/assets/113130559/5e77d2a3-c3f2-4a63-b5ec-2ef934cac5db) | ![codev_l3](https://github.com/YadavYashvant/Codev/assets/113130559/2f3a9fe3-056f-40c8-a702-42c219f5d711) | ![codev_l4](https://github.com/YadavYashvant/Codev/assets/113130559/f562603f-d55c-4731-881d-665e4ccf7d36)
 
 -------------------------!---------------------------------|-------------------------------------------------------|-------------------------------------------------------|
 
