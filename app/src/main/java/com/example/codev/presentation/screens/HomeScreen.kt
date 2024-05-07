@@ -34,6 +34,7 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -85,6 +86,9 @@ import com.example.codev.presentation.ProfileDialog
 import com.example.codev.presentation.sign_in.UserData
 import com.example.codev.presentation.sign_in.fontfamily
 import com.example.codev.presentation.spacefamily
+import com.example.codev.ui.theme.green
+import com.example.codev.ui.theme.greenV
+import com.example.codev.ui.theme.skyblue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -246,12 +250,14 @@ fun HomeScreen(
                 onClick = {
                     navController.navigate("addproject")
                 },
+                containerColor = greenV,
                 modifier = Modifier
                     .padding(bottom = 25.dp, end = 36.dp)
                     .align(Alignment.BottomEnd)
             ) {
                 Icon(
                     imageVector = Icons.Filled.Add, contentDescription = "add project",
+                    tint = Color.Black
                 )
             }
         }
