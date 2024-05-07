@@ -108,7 +108,7 @@ fun ProfileDialog(
 
                         Spacer(modifier = Modifier.height(10.dp))
                     }
-                    if (userData?.username != null) {
+                    if (userData.username != null) {
                         Text(
                             text = userData.username,
                             textAlign = TextAlign.Center,

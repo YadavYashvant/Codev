@@ -33,6 +33,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -84,9 +85,10 @@ import com.example.codev.presentation.ProfileDialog
 import com.example.codev.presentation.sign_in.UserData
 import com.example.codev.presentation.sign_in.fontfamily
 import com.example.codev.presentation.spacefamily
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalCoroutinesApi::class)
 @Composable
 fun HomeScreen(
     navController: NavController,
@@ -96,11 +98,12 @@ fun HomeScreen(
     dataOrException: DataOrException<List<Post>, Exception>
 ) {
     val posts = dataOrException.data
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+//    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
-            .nestedScroll(scrollBehavior.nestedScrollConnection),
+//            .nestedScroll(scrollBehavior.nestedScrollConnection),
+                ,
         topBar = {
             CenterAlignedTopAppBar(
                 colors = TopAppBarDefaults.smallTopAppBarColors(
@@ -129,8 +132,6 @@ fun HomeScreen(
                         ProfileDialog(userData, onSignOut)
                     }
                 },
-
-                scrollBehavior = scrollBehavior,
             )
         }
     ) {
@@ -213,9 +214,10 @@ fun HomeScreen(
                                 }
                             }
                         }
+
                         items(
                             items = posts
-                        ) { post ->
+                        ) { post->
 
                             PostCard(post = post)
 
@@ -240,7 +242,7 @@ fun HomeScreen(
 
                 }
             }
-            ExtendedFloatingActionButton(
+            FloatingActionButton(
                 onClick = {
                     navController.navigate("addproject")
                 },
@@ -250,9 +252,6 @@ fun HomeScreen(
             ) {
                 Icon(
                     imageVector = Icons.Filled.Add, contentDescription = "add project",
-                    Modifier
-                        .padding(end = 5.dp)
-                        .scale(1.5F)
                 )
             }
         }
