@@ -61,17 +61,6 @@ fun ProfileDialog(
         )
     }
 
-    /*IconButton(onClick = {
-        openDialog.value = true
-    },
-        modifier = Modifier
-            .wrapContentWidth()
-            .wrapContentHeight()
-            .padding(8.dp)
-    ) {
-        Icon(imageVector = Icons.Outlined.Person, contentDescription = "exiting app")
-    }*/
-
     if (openDialog.value) {
         Dialog(onDismissRequest = { openDialog.value = false }) {
 
@@ -132,13 +121,8 @@ fun ProfileDialog(
                                         googleAuthUiClient.signOut()
                                     }
                                 }
-                                /*scope.launch {
-                                    googleAuthUiClient.signOut()
-                                }*/
                                 openDialog.value = false
                                 navController.navigate("sign_in")
-
-
                             },
                             modifier = Modifier.padding(8.dp),
                         ) {
