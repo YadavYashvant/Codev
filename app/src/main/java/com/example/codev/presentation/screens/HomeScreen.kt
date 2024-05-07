@@ -2,7 +2,6 @@ package com.example.codev.presentation.screens
 
 import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -15,51 +14,37 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Search
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DismissibleDrawerSheet
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -68,40 +53,25 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
+import androidx.navigation.NavHostController
 import com.example.codev.animations.AnimatedPreloaderBill
 import com.example.codev.components.CircularProgressBar
 import com.example.codev.components.PostCard
 import com.example.codev.data.DataOrException
 import com.example.codev.firestore_feature.PostsViewModel
-import com.example.codev.firestore_feature.addtosavedcollections
 import com.example.codev.firestore_feature.model.Post
-import com.example.codev.firestore_feature.userList
 import com.example.codev.presentation.FilterChipHome
 import com.example.codev.presentation.ProfileDialog
+import com.example.codev.presentation.sign_in.GoogleAuthUiClient
 import com.example.codev.presentation.sign_in.UserData
-import com.example.codev.presentation.sign_in.fontfamily
-import com.example.codev.presentation.spacefamily
-import com.example.codev.ui.theme.green
 import com.example.codev.ui.theme.greenV
-import com.example.codev.ui.theme.skyblue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
@@ -110,8 +80,9 @@ import kotlinx.coroutines.launch
 @Composable
 fun HomeScreen(
     navController: NavController,
+    navController_par: NavHostController,
     userData: UserData?,
-    onSignOut: () -> Unit,
+    googleAuthUiClient: GoogleAuthUiClient,
     postsviewModel: PostsViewModel,
     dataOrException: DataOrException<List<Post>, Exception>
 ) {
@@ -190,7 +161,7 @@ fun HomeScreen(
 
                     actions = {
                         if (userData != null) {
-                            ProfileDialog(userData, onSignOut)
+                            ProfileDialog(userData = userData, googleAuthUiClient = googleAuthUiClient, navController = navController_par)
                         }
                     },
                 )
@@ -217,7 +188,7 @@ fun HomeScreen(
 
                                 AnimatedPreloaderBill(
                                     modifier = Modifier
-                                        .height(350.dp)
+                                        .height(300.dp)
                                         .fillMaxWidth()
                                     //.padding(top = 40.dp)
                                 )

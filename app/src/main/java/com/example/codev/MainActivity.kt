@@ -35,7 +35,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.toArgb
-import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -112,13 +111,12 @@ class MainActivity : ComponentActivity() {
                             LinearProgressIndicator(modifier = Modifier
                                 .align(Alignment.TopCenter)
                                 .fillMaxWidth()
-                                .padding(vertical = 32.dp, horizontal = 8.dp), progress = 0.5f)
+                                .padding(vertical = 32.dp, horizontal = 8.dp), progress = 1f)
                         }
                     }
 
                     NavHost(navController = navController, startDestination = "sign_in") {
                         composable("sign_in") {
-
                             LaunchedEffect(key1 = Unit) {
                                 if(googleAuthUiClient.getSignedInUser() != null) {
                                     navController.navigate("user_screen")
@@ -185,19 +183,13 @@ class MainActivity : ComponentActivity() {
                                 onStatusBarColorChange = { color ->
                                     statusBarColor = color.toArgb()
                                 },
+                                navController_par = navController,
                                 postsviewModel = postsviewModel,
                                 dataOrException = dataOrException,
                                 darkTheme = darkTheme,
                                 onThemeUpdated = { darkTheme = !darkTheme },
                                 userData = googleAuthUiClient.getSignedInUser(),
-                                onSignOut = {
-                                    lifecycleScope.launch {
-                                        googleAuthUiClient.signOut()
-                                        Toast.makeText(applicationContext, "Signed Out", Toast.LENGTH_LONG).show()
-
-                                        navController.popBackStack()
-                                    }
-                                }
+                                googleAuthUiClient = googleAuthUiClient,
                             )
                         }
                     }
