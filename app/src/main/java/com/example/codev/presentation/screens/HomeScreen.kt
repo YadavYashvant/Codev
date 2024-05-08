@@ -1,6 +1,7 @@
 package com.example.codev.presentation.screens
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
@@ -180,7 +181,10 @@ fun HomeScreen(
                     /*.verticalScroll(scrollState)*/
                 ) {
                     var value by remember { mutableStateOf("") }
-                    val onValueChange: (String) -> Unit = { value = it }
+                    val onValueChange: (String) -> Unit = {
+                        postsviewModel.searchPosts(value)
+                        Log.d("HomeScreen", "searching for $value")
+                    }
 
                     posts?.let {
                         LazyColumn {
@@ -232,6 +236,7 @@ fun HomeScreen(
                                     "Now Playing",
                                     "Trending"
                                 )
+
                                 val scrollstate = rememberScrollState()
                                 Row(
                                     modifier = Modifier

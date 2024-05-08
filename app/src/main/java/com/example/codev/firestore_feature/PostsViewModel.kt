@@ -1,5 +1,6 @@
 package com.example.codev.firestore_feature
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -40,4 +41,14 @@ class PostsViewModel @Inject constructor(
             loading.value = false
         }
     }
+
+    public fun searchPosts(query: String) {
+        viewModelScope.launch {
+            loading.value = true
+            data.value = repository.searchPostsInFirestore(query)
+            Log.d("PostsViewModel", "searchPosts: ${data.value.data}")
+            loading.value = false
+        }
+    }
+
 }

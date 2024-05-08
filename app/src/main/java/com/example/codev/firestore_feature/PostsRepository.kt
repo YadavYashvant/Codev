@@ -24,6 +24,19 @@ class PostsRepository @Inject constructor(
         return dataOrException
     }
 
+    suspend fun searchPostsInFirestore(query: String): DataOrException<List<Post>, Exception> {
+        val dataOrException = DataOrException<List<Post>, Exception>()
 
+        try {
+            dataOrException.data = queryPostsByName
+                .whereEqualTo("name", query)
+                .get()
+                .await()
+                .map { document -> document.toObject(Post::class.java) }
+        } catch (e: Exception) {
+            dataOrException.e = e
+        }
+        return dataOrException
+    }
 
 }

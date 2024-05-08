@@ -55,7 +55,6 @@ fun ProfileScreen(
     googleAuthUiClient: GoogleAuthUiClient,
     navController_par: NavHostController
 ) {
-
     val navController = rememberNavController()
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     Scaffold(
