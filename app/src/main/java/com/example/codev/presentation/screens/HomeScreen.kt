@@ -141,12 +141,13 @@ fun HomeScreen(
                         titleContentColor = MaterialTheme.colorScheme.primary,
                     ),
                     title = {
-                        Text(
+                            SearchBarHome()
+                        /*Text(
                             "Codev",
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
                             fontSize = 25.sp
-                        )
+                        )*/
                     },
                     navigationIcon = {
                         IconButton(onClick = {
