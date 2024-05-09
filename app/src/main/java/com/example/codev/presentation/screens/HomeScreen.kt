@@ -65,6 +65,7 @@ import androidx.navigation.NavHostController
 import com.example.codev.animations.AnimatedPreloaderBill
 import com.example.codev.components.CircularProgressBar
 import com.example.codev.components.PostCard
+import com.example.codev.components.SearchBarHome
 import com.example.codev.data.DataOrException
 import com.example.codev.firestore_feature.PostsViewModel
 import com.example.codev.firestore_feature.model.Post
@@ -197,7 +198,7 @@ fun HomeScreen(
                                     //.padding(top = 40.dp)
                                 )
 
-                                TextField(
+                                /*TextField(
                                     value = value,
                                     onValueChange = onValueChange,
                                     shape = MaterialTheme.shapes.extraLarge,
@@ -224,7 +225,7 @@ fun HomeScreen(
                                                 .padding(10.dp)
                                         )
                                     },
-                                )
+                                )*/
 
                                 Spacer(modifier = Modifier.height(20.dp))
 

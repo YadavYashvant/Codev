@@ -17,21 +17,29 @@ fun addToFirebase(
     val dbUser: CollectionReference = db.collection("users")
     val users = Post(name, branch, skill, uid,)
 
-    dbUser.add(users)
-        .addOnSuccessListener { documentReference ->
-            android.widget.Toast.makeText(
-                context,
-                "User added successfully",
-                android.widget.Toast.LENGTH_SHORT
-            ).show()
-        }
-        .addOnFailureListener { e ->
-            android.widget.Toast.makeText(
-                context,
-                "Error adding user",
-                android.widget.Toast.LENGTH_SHORT
-            ).show()
-        }
+    if(users.branch == "" || users.name == "" || users.skill == "") {
+        android.widget.Toast.makeText(
+            context,
+            "Please fill all fields",
+            android.widget.Toast.LENGTH_SHORT
+        ).show()
+    } else {
+        dbUser.add(users)
+            .addOnSuccessListener { documentReference ->
+                android.widget.Toast.makeText(
+                    context,
+                    "User added successfully",
+                    android.widget.Toast.LENGTH_SHORT
+                ).show()
+            }
+            .addOnFailureListener { e ->
+                android.widget.Toast.makeText(
+                    context,
+                    "Error adding user",
+                    android.widget.Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
 
 }
 
