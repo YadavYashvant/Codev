@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -16,7 +17,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,10 +37,17 @@ fun SearchBarHome() {
         active = active,
         onActiveChange = {active = it},
         placeholder = {
-            Text("Search")
+            Text("Search for projects or profiles ...", fontSize = 18.sp)
         },
         leadingIcon = {
-            Icon(imageVector = Icons.Default.Search, contentDescription = "search icon")
+            Icon(imageVector = Icons.Default.Search, contentDescription = "search icon",
+                modifier = Modifier.scale(1.2f)
+            )
+        },
+        trailingIcon = {
+                       Icon(imageVector = Icons.Default.Close, contentDescription = "close icon",
+
+                       )
         },
         modifier = Modifier.padding(horizontal = 20.dp).height(300.dp).fillMaxWidth(),
 

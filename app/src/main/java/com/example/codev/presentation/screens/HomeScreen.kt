@@ -22,6 +22,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Favorite
@@ -40,6 +41,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -56,6 +58,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -68,6 +71,7 @@ import com.example.codev.components.PostCard
 import com.example.codev.components.SearchBarHome
 import com.example.codev.data.DataOrException
 import com.example.codev.firestore_feature.PostsViewModel
+import com.example.codev.firestore_feature.UserAction
 import com.example.codev.firestore_feature.model.Post
 import com.example.codev.presentation.FilterChipHome
 import com.example.codev.presentation.ProfileDialog
@@ -88,6 +92,8 @@ fun HomeScreen(
     postsviewModel: PostsViewModel,
     dataOrException: DataOrException<List<Post>, Exception>
 ) {
+
+    val state = postsviewModel.state
 
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -193,7 +199,43 @@ fun HomeScreen(
                                     //.padding(top = 40.dp)
                                 )
 
-                                SearchBarHome()
+                                OutlinedTextField(
+                                    modifier = Modifier.fillMaxWidth().padding(20.dp),
+                                    value = state.searchText,
+                                    onValueChange = {newText ->
+                                        postsviewModel.onAction(
+                                            UserAction.TextFieldInput(newText)
+                                        )
+                                    },
+                                    placeholder = {
+                                        Text(
+                                            text = "Search...",
+                                        )
+                                    },
+                                    leadingIcon = {
+                                        Icon(
+                                            imageVector = Icons.Filled.Search,
+                                            contentDescription = "Search Icon",
+                                        )
+                                    },
+                                    trailingIcon = {
+                                        IconButton(
+                                            onClick = {
+                                                if (state.searchText.isNotEmpty()) {
+                                                    postsviewModel.onAction(
+                                                        UserAction.TextFieldInput("")
+                                                    )
+                                                }
+                                            }
+                                        ) {
+                                            Icon(
+                                                imageVector = Icons.Filled.Close,
+                                                contentDescription = "Close Icon",
+                                                tint = Color.White
+                                            )
+                                        }
+                                    },
+                                )
 
                                 Spacer(modifier = Modifier.height(20.dp))
 
@@ -221,12 +263,21 @@ fun HomeScreen(
                                 }
                             }
 
-                            items(
-                                items = posts
-                            ) { post ->
+                            if(state.searchText.isNotEmpty()){
+                                items(
+                                    state.list
+//                                posts
+                                ) { post ->
+                                    PostCard(post = post)
 
-                                PostCard(post = post)
+                                }
+                            }else{
+                                items(
+                                    posts
+                                ) { post ->
+                                    PostCard(post = post)
 
+                                }
                             }
                         }
                     }
@@ -266,7 +317,6 @@ fun HomeScreen(
         }
     }
 }
-
 
 
 
