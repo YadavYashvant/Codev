@@ -91,7 +91,6 @@ fun HomeScreen(
 
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-    val scrollState = rememberScrollState()
 
     val items = listOf( Icons.Default.Home, Icons.Filled.Settings, Icons.Filled.Search, Icons.Default.Favorite, Icons.Default.Face, Icons.Default.Email,)
     val items_name = listOf("Home", "Settings", "Search","Favorite", "Profile", "Contact", )
@@ -128,11 +127,9 @@ fun HomeScreen(
     ) {
 
         val posts = dataOrException.data
-//    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
         Scaffold(
             modifier = Modifier
                 .fillMaxSize()
-//            .nestedScroll(scrollBehavior.nestedScrollConnection),
             ,
             topBar = {
                 CenterAlignedTopAppBar(
@@ -141,13 +138,13 @@ fun HomeScreen(
                         titleContentColor = MaterialTheme.colorScheme.primary,
                     ),
                     title = {
-                            SearchBarHome()
-                        /*Text(
+
+                        Text(
                             "Codev",
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
                             fontSize = 25.sp
-                        )*/
+                        )
                     },
                     navigationIcon = {
                         IconButton(onClick = {
@@ -182,11 +179,7 @@ fun HomeScreen(
                         .fillMaxSize()
                     /*.verticalScroll(scrollState)*/
                 ) {
-                    var value by remember { mutableStateOf("") }
-                    val onValueChange: (String) -> Unit = {
-                        postsviewModel.searchPosts(value)
-                        Log.d("HomeScreen", "searching for $value")
-                    }
+                    Spacer(modifier = Modifier.height(50.dp))
 
                     posts?.let {
                         LazyColumn {
@@ -195,38 +188,10 @@ fun HomeScreen(
                                 AnimatedPreloaderBill(
                                     modifier = Modifier
                                         .height(300.dp)
+
                                         .fillMaxWidth()
                                     //.padding(top = 40.dp)
                                 )
-
-                                /*TextField(
-                                    value = value,
-                                    onValueChange = onValueChange,
-                                    shape = MaterialTheme.shapes.extraLarge,
-                                    placeholder = {
-                                        Text(
-                                            text = "Search Projects",
-                                            fontFamily = com.example.codev.spacefamily,
-                                            textAlign = TextAlign.Center,
-                                        )
-                                    },
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(horizontal = 30.dp),
-                                    colors = TextFieldDefaults.textFieldColors(
-                                        unfocusedIndicatorColor = Color.Transparent,
-                                        focusedIndicatorColor = Color.Transparent
-                                    ),
-                                    leadingIcon = {
-                                        Icon(
-                                            imageVector = Icons.Outlined.Search,
-                                            contentDescription = null,
-                                            Modifier
-                                                .scale(1.3F)
-                                                .padding(10.dp)
-                                        )
-                                    },
-                                )*/
 
                                 Spacer(modifier = Modifier.height(20.dp))
 
@@ -299,6 +264,7 @@ fun HomeScreen(
         }
     }
 }
+
 
 
 
