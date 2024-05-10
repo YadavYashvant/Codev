@@ -193,6 +193,8 @@ fun HomeScreen(
                                     //.padding(top = 40.dp)
                                 )
 
+                                SearchBarHome()
+
                                 Spacer(modifier = Modifier.height(20.dp))
 
                                 val chipList = listOf(

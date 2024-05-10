@@ -1,5 +1,6 @@
 package com.example.codev.components
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -38,7 +39,7 @@ fun SearchBarHome() {
         leadingIcon = {
             Icon(imageVector = Icons.Default.Search, contentDescription = "search icon")
         },
-        modifier = Modifier.padding(horizontal = 20.dp),
+        modifier = Modifier.padding(horizontal = 20.dp).height(300.dp).fillMaxWidth(),
 
     ) {
 
