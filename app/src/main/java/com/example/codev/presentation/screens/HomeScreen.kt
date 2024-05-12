@@ -97,6 +97,9 @@ fun HomeScreen(
 
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+    val close_search = remember {
+        mutableStateOf(false)
+    }
 
     val items = listOf( Icons.Default.Home, Icons.Filled.Settings, Icons.Filled.Search, Icons.Default.Favorite, Icons.Default.Face, Icons.Default.Email,)
     val items_name = listOf("Home", "Settings", "Search","Favorite", "Profile", "Contact", )
@@ -199,17 +202,26 @@ fun HomeScreen(
                                     //.padding(top = 40.dp)
                                 )
 
-                                OutlinedTextField(
-                                    modifier = Modifier.fillMaxWidth().padding(20.dp),
+                                TextField(
+                                    modifier = Modifier.fillMaxWidth()
+                                        .padding(horizontal = 20.dp)
+
+                                    ,
+                                    shape = MaterialTheme.shapes.extraLarge,
+                                    colors = TextFieldDefaults.textFieldColors(
+                                        unfocusedIndicatorColor = Color.Transparent,
+                                        focusedIndicatorColor = Color.Transparent
+                                    ),
                                     value = state.searchText,
                                     onValueChange = {newText ->
+                                        close_search.value = true
                                         postsviewModel.onAction(
                                             UserAction.TextFieldInput(newText)
                                         )
                                     },
                                     placeholder = {
                                         Text(
-                                            text = "Search...",
+                                            text = "Search prjects with tech stack ...",
                                         )
                                     },
                                     leadingIcon = {
@@ -219,20 +231,16 @@ fun HomeScreen(
                                         )
                                     },
                                     trailingIcon = {
-                                        IconButton(
-                                            onClick = {
-                                                if (state.searchText.isNotEmpty()) {
-                                                    postsviewModel.onAction(
-                                                        UserAction.TextFieldInput("")
-                                                    )
-                                                }
+                                        if(close_search.value){
+                                            IconButton(onClick = {
+                                                postsviewModel.onAction(UserAction.TextFieldInput(""))
+                                                close_search.value = false
+                                            }) {
+                                                Icon(
+                                                    imageVector = Icons.Filled.Close,
+                                                    contentDescription = "Close Icon",
+                                                )
                                             }
-                                        ) {
-                                            Icon(
-                                                imageVector = Icons.Filled.Close,
-                                                contentDescription = "Close Icon",
-                                                tint = Color.White
-                                            )
                                         }
                                     },
                                 )

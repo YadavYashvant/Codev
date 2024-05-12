@@ -66,7 +66,7 @@ class PostsViewModel @Inject constructor(
                 searchJob?.cancel()
                 searchJob = viewModelScope.launch {
                     delay(500L)
-                    searchActorsInList(searchQuery = userAction.text)
+                    searchPostsInList(searchQuery = userAction.text)
                 }
             }
             UserAction.SortIconClicked -> {
@@ -78,7 +78,7 @@ class PostsViewModel @Inject constructor(
         }
     }
 
-    private fun searchActorsInList(
+    private fun searchPostsInList(
         searchQuery: String
     ) {
         searchQuery.trim()
