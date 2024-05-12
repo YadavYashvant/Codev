@@ -34,6 +34,7 @@ import com.example.codev.firestore_feature.addtosavedcollections
 import com.example.codev.firestore_feature.model.Post
 import com.example.codev.firestore_feature.savedposts
 import com.example.codev.presentation.spacefamily
+import com.example.codev.ui.theme.primaryContainerLight
 
 @ExperimentalCoroutinesApi
 @Composable
@@ -46,6 +47,9 @@ fun PostCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 16.dp
         ),
+        /*colors = CardDefaults.outlinedCardColors(
+            containerColor = primaryContainerLight,
+        ),*/
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 10.dp, horizontal = 20.dp)
@@ -100,7 +104,7 @@ fun PostCard(
                         .padding(8.dp)
                         .background(
                             color = Color.LightGray,
-                            shape = RoundedCornerShape(40.dp)
+                            shape = RoundedCornerShape(20.dp)
                         )
                         .align(Alignment.CenterHorizontally),
 
