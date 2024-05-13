@@ -55,7 +55,7 @@ import com.example.codev.R
 fun SettingScreen(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
     Column(
         modifier = Modifier
-            .wrapContentSize()
+            .fillMaxSize()
             .background(MaterialTheme.colorScheme.surface),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
