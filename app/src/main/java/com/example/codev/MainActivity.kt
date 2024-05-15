@@ -63,14 +63,6 @@ class MainActivity : ComponentActivity() {
 
     private val postsviewModel: PostsViewModel by viewModels()
 
-    /*override fun onStart() {
-        super.onStart()
-        reading = true
-        
-        readFromFirebase()
-        readsavedFromFirebase()
-    }*/
-
     private val googleAuthUiClient by lazy {
         GoogleAuthUiClient(
             context = applicationContext,
