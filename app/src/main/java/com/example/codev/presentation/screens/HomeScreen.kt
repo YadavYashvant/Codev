@@ -33,6 +33,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DismissibleDrawerSheet
+import androidx.compose.material3.Divider
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -203,7 +204,8 @@ fun HomeScreen(
                                 )
 
                                 TextField(
-                                    modifier = Modifier.fillMaxWidth()
+                                    modifier = Modifier
+                                        .fillMaxWidth()
                                         .padding(horizontal = 20.dp)
 
                                     ,
@@ -276,7 +278,10 @@ fun HomeScreen(
                                     state.list
 //                                posts
                                 ) { post ->
+                                    Spacer(modifier = Modifier.height(8.dp))
                                     PostCard(post = post)
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Divider()
 
                                 }
                             }else{
