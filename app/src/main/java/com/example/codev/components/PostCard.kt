@@ -43,16 +43,16 @@ fun PostCard(
 ) {
     val mContext = LocalContext.current
 
-    OutlinedCard(
-        elevation = CardDefaults.cardElevation(
+    Card(
+        /*elevation = CardDefaults.cardElevation(
             defaultElevation = 16.dp
-        ),
+        ),*/
         /*colors = CardDefaults.outlinedCardColors(
             containerColor = primaryContainerLight,
         ),*/
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 10.dp, horizontal = 20.dp)
+            .padding(vertical = 6.dp, horizontal = 12.dp)
     ) {
         Column(
             Modifier

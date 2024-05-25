@@ -206,7 +206,7 @@ fun HomeScreen(
                                 TextField(
                                     modifier = Modifier
                                         .fillMaxWidth()
-                                        .padding(horizontal = 20.dp)
+                                        .padding(horizontal = 12.dp)
 
                                     ,
                                     shape = MaterialTheme.shapes.extraLarge,
@@ -281,15 +281,19 @@ fun HomeScreen(
                                     Spacer(modifier = Modifier.height(8.dp))
                                     PostCard(post = post)
                                     Spacer(modifier = Modifier.height(8.dp))
-                                    Divider()
+                                    Divider(modifier = Modifier.height(1.dp).padding(horizontal = 12.dp))
+//                                    Divider(modifier = Modifier.padding(vertical = 0.5.dp, horizontal = 12.dp))
 
                                 }
                             }else{
                                 items(
                                     posts
                                 ) { post ->
+                                    Spacer(modifier = Modifier.height(8.dp))
                                     PostCard(post = post)
-
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Divider(modifier = Modifier.height(1.dp).padding(horizontal = 12.dp))
+//                                    Divider(modifier = Modifier.padding(vertical = 0.5.dp, horizontal = 12.dp))
                                 }
                             }
                         }
@@ -316,7 +320,7 @@ fun HomeScreen(
                     onClick = {
                         navController.navigate("addproject")
                     },
-                    containerColor = greenV,
+//                    containerColor = greenV,
                     modifier = Modifier
                         .padding(bottom = 20.dp, end = 30.dp)
                         .align(Alignment.BottomEnd)
