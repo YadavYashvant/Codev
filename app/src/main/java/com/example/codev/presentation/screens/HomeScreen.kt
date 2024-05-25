@@ -6,6 +6,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -60,17 +62,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -175,6 +181,14 @@ fun HomeScreen(
                         containerColor = MaterialTheme.colorScheme.background,
                         titleContentColor = MaterialTheme.colorScheme.primary,
                     ),
+                    modifier = Modifier
+                        /*.height(
+                            AppBarExpendedHeight
+                        )*/
+                        .shadow(elevation = if (offset == maxOffset) 4.dp else 0.dp)
+                        .offset { IntOffset(x = 0, y = -offset) },
+//                    elevation = if (offset == maxOffset) 4.dp else 0.dp,
+
                     title = {
 
                         Text(
@@ -205,6 +219,19 @@ fun HomeScreen(
                 )
             }
         ) {
+
+            var sizeImage by remember { mutableStateOf(IntSize.Zero) }
+
+//            val grad_colors_light = listOf(Color.White, Color.Transparent, Color.White)
+//            val grad_colors_dark = listOf(Color.Black, Color.Transparent, Color.Black)
+
+            val gradient = Brush.verticalGradient(
+//                colors = listOf(Color.Transparent, Color.Black),
+                colors = listOf(Transparent, MaterialTheme.colorScheme.surface),
+                startY = sizeImage.height.toFloat()/10,  // 1/3
+                endY = sizeImage.height.toFloat()/1,  // 2/3
+            )
+
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -227,38 +254,36 @@ fun HomeScreen(
 
                                 Box(
                                     modifier = Modifier
-                                        .wrapContentHeight()
-                                        .graphicsLayer {
+                                        .padding(bottom = 20.dp)
+//                                        .wrapContentHeight()
+                                        /*.graphicsLayer {
                                             alpha = 1f - offsetProgress
-                                        }
+                                        }*/
                                 ) {
+
+                                    Image(
+                                        painter = painterResource(id = R.drawable.cafe),
+                                        contentScale = ContentScale.Crop,
+                                        modifier = Modifier
+                                            .height(425.dp)
+                                            .onGloballyPositioned {
+                                                sizeImage = it.size
+                                            },
+                                        contentDescription = "cafe"
+                                    )
 
                                     AnimatedPreloaderBill(
                                         modifier = Modifier
-                                            .height(300.dp)
+                                            .height(350.dp)
 
                                             .fillMaxWidth()
                                         //.padding(top = 40.dp)
                                     )
 
-                                    /*Image(
-                                        painter = painterResource(id = R.drawable.cafe),
-                                        contentScale = ContentScale.Crop,
-                                        modifier = Modifier.height(400.dp),
-                                        contentDescription = "cafe"
-                                    )*/
-
                                     Box(
                                         modifier = Modifier
-                                            .fillMaxSize()
-                                            .background(
-                                                Brush.verticalGradient(
-                                                    colorStops = arrayOf(
-                                                        Pair(0.4f, Transparent),
-                                                        Pair(1f, White)
-                                                    )
-                                                )
-                                            )
+                                            .matchParentSize()
+                                            .background(gradient)
                                     )
 
                                 }

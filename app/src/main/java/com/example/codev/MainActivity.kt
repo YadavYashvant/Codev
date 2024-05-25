@@ -45,6 +45,7 @@ import com.example.codev.presentation.profile.ProfileScreen
 import com.example.codev.presentation.sign_in.GoogleAuthUiClient
 import com.example.codev.presentation.sign_in.SignInScreen
 import com.example.codev.presentation.sign_in.SigninViewmodel
+import com.google.accompanist.insets.ProvideWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
@@ -91,38 +92,41 @@ class MainActivity : ComponentActivity() {
             CodevTheme(
                 darkTheme = darkTheme,
             ) {
+                ProvideWindowInsets {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-                    if(reading) {
+                    if (reading) {
                         Box(
                             modifier = Modifier.fillMaxSize()
                         ) {
-                            LinearProgressIndicator(modifier = Modifier
-                                .align(Alignment.TopCenter)
-                                .fillMaxWidth()
-                                .padding(vertical = 32.dp, horizontal = 8.dp), progress = 1f)
+                            LinearProgressIndicator(
+                                modifier = Modifier
+                                    .align(Alignment.TopCenter)
+                                    .fillMaxWidth()
+                                    .padding(vertical = 32.dp, horizontal = 8.dp), progress = 1f
+                            )
                         }
                     }
 
                     NavHost(navController = navController, startDestination = "sign_in") {
                         composable("sign_in") {
                             LaunchedEffect(key1 = Unit) {
-                                if(googleAuthUiClient.getSignedInUser() != null) {
+                                if (googleAuthUiClient.getSignedInUser() != null) {
                                     navController.navigate("user_screen")
                                 }
                             }
 
-                            val  viewModel = viewModel<SigninViewmodel>()
+                            val viewModel = viewModel<SigninViewmodel>()
                             val state by viewModel.state.collectAsStateWithLifecycle()
 
                             val launcher = rememberLauncherForActivityResult(
                                 contract = ActivityResultContracts.StartIntentSenderForResult(),
-                                onResult = {result ->
-                                    if(result.resultCode == RESULT_OK) {
+                                onResult = { result ->
+                                    if (result.resultCode == RESULT_OK) {
                                         lifecycleScope.launch {
                                             val signInResult = googleAuthUiClient.signInwithIntent(
                                                 intent = result.data ?: return@launch
@@ -136,8 +140,9 @@ class MainActivity : ComponentActivity() {
                             //Launched effect is used to navigate to user screen when sign in is successful
 
                             LaunchedEffect(key1 = state.isSigninSuccessful) {
-                                if(state.isSigninSuccessful) {
-                                    Toast.makeText(applicationContext,
+                                if (state.isSigninSuccessful) {
+                                    Toast.makeText(
+                                        applicationContext,
                                         "Sign in successful",
                                         Toast.LENGTH_LONG
                                     ).show()
@@ -187,6 +192,7 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 }
+            }
             }
         }
     }
