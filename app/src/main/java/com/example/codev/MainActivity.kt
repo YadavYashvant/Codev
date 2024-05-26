@@ -35,6 +35,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.toArgb
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -74,6 +75,12 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        window.setFlags(
+            android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
+
         super.onCreate(savedInstanceState)
 
         setContent {
@@ -83,7 +90,7 @@ class MainActivity : ComponentActivity() {
                 mutableStateOf(defaultStatusBarColor)
             }
             window.statusBarColor = statusBarColor
-            //WindowCompat.setDecorFitsSystemWindows(window,false)
+            WindowCompat.setDecorFitsSystemWindows(window,false)
 
             var darkTheme by remember { mutableStateOf(false) }
 

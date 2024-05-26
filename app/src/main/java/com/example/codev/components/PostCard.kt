@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -52,7 +53,7 @@ fun PostCard(
         ),*/
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 6.dp, horizontal = 12.dp)
+            .padding(vertical = 16.dp, horizontal = 16.dp)
     ) {
         Column(
             Modifier
@@ -98,12 +99,12 @@ fun PostCard(
 
             Spacer(modifier = Modifier.height(8.dp))
             post.skill?.let {
-                Card(
+                OutlinedCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp)
                         .background(
-                            color = Color.LightGray,
+                            color = MaterialTheme.colorScheme.onSurface,
                             shape = RoundedCornerShape(20.dp)
                         )
                         .align(Alignment.CenterHorizontally),

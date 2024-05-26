@@ -73,6 +73,8 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
@@ -83,6 +85,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.codev.R
 import com.example.codev.animations.AnimatedPreloaderBill
+import com.example.codev.animations.AnimatedPreloaderLogin
 import com.example.codev.components.CircularProgressBar
 import com.example.codev.components.PostCard
 import com.example.codev.components.SearchBarHome
@@ -175,16 +178,16 @@ fun HomeScreen(
             modifier = Modifier
                 .fillMaxSize()
             ,
-            topBar = {
+            /*topBar = {
                 CenterAlignedTopAppBar(
                     colors = TopAppBarDefaults.smallTopAppBarColors(
                         containerColor = MaterialTheme.colorScheme.background,
                         titleContentColor = MaterialTheme.colorScheme.primary,
                     ),
                     modifier = Modifier
-                        /*.height(
+                        *//*.height(
                             AppBarExpendedHeight
-                        )*/
+                        )*//*
                         .shadow(elevation = if (offset == maxOffset) 4.dp else 0.dp)
                         .offset { IntOffset(x = 0, y = -offset) },
 //                    elevation = if (offset == maxOffset) 4.dp else 0.dp,
@@ -217,7 +220,7 @@ fun HomeScreen(
                         }
                     },
                 )
-            }
+            }*/
         ) {
 
             var sizeImage by remember { mutableStateOf(IntSize.Zero) }
@@ -228,7 +231,7 @@ fun HomeScreen(
             val gradient = Brush.verticalGradient(
 //                colors = listOf(Color.Transparent, Color.Black),
                 colors = listOf(Transparent, MaterialTheme.colorScheme.surface),
-                startY = sizeImage.height.toFloat()/10,  // 1/3
+                startY = sizeImage.height.toFloat()/3,  // 1/3
                 endY = sizeImage.height.toFloat()/1,  // 2/3
             )
 
@@ -244,7 +247,7 @@ fun HomeScreen(
                         .fillMaxSize()
                     /*.verticalScroll(scrollState)*/
                 ) {
-                    Spacer(modifier = Modifier.height(50.dp))
+//                    Spacer(modifier = Modifier.height(50.dp))
 
 //                    val offsetProgress = max(0f, 1f * 3f - 2f * 20f) / 20f
 
@@ -272,13 +275,25 @@ fun HomeScreen(
                                         contentDescription = "cafe"
                                     )
 
-                                    AnimatedPreloaderBill(
+                                    Text(text = "Welcome \n to \n Codev",
+                                        style = TextStyle(
+                                            color = White,
+                                            fontSize = 70.sp,
+                                            textAlign = TextAlign.Center,
+                                            fontWeight = FontWeight.ExtraBold
+                                        ),
+                                        modifier = Modifier.fillMaxSize()
+                                            .paddingFromBaseline(top = 120.dp)
+                                            .padding(horizontal = 20.dp)
+                                        )
+
+                                    /*AnimatedPreloaderBill(
                                         modifier = Modifier
                                             .height(350.dp)
 
                                             .fillMaxWidth()
                                         //.padding(top = 40.dp)
-                                    )
+                                    )*/
 
                                     Box(
                                         modifier = Modifier

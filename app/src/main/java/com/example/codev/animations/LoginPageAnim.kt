@@ -14,7 +14,7 @@ import com.example.codev.R
 fun AnimatedPreloaderLogin(modifier: Modifier = Modifier) {
     val preloaderLottieComposition by rememberLottieComposition(
         LottieCompositionSpec.RawRes(
-            R.raw.sign_in
+            R.raw.coding
         )
     )
 
