@@ -1,5 +1,6 @@
 package com.example.codev.presentation
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -45,7 +46,8 @@ import kotlinx.coroutines.withContext
 fun ProfileDialog(
     userData: UserData,
     googleAuthUiClient: GoogleAuthUiClient,
-    navController: NavHostController
+    navController: NavHostController,
+    modifier: Modifier
 ) {
     val openDialog = remember { mutableStateOf(false) }
 
@@ -53,11 +55,12 @@ fun ProfileDialog(
         AsyncImage(
             model = userData.profilePicture,
             contentDescription = null,
-            modifier = Modifier
-                .size(40.dp)
+            modifier = modifier
+                .size(50.dp)
                 .clickable { openDialog.value = true }
+                .border(4.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(30.dp))
                 .clip(MaterialTheme.shapes.extraLarge),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
     }
 

@@ -268,7 +268,7 @@ fun HomeScreen(
                                         painter = painterResource(id = R.drawable.cafe),
                                         contentScale = ContentScale.Crop,
                                         modifier = Modifier
-                                            .height(425.dp)
+                                            .height(520.dp)
                                             .onGloballyPositioned {
                                                 sizeImage = it.size
                                             },
@@ -283,7 +283,7 @@ fun HomeScreen(
                                             fontWeight = FontWeight.ExtraBold
                                         ),
                                         modifier = Modifier.fillMaxSize()
-                                            .paddingFromBaseline(top = 120.dp)
+                                            .paddingFromBaseline(top = 160.dp)
                                             .padding(horizontal = 20.dp)
                                         )
 
@@ -301,11 +301,32 @@ fun HomeScreen(
                                             .background(gradient)
                                     )
 
-                                }
+                                    IconButton(onClick = {
+                                        scope.launch {
+                                            drawerState.open()
+                                        }
+                                    },
+                                        modifier = Modifier.align(Alignment.TopStart).padding(top = 45.dp, start = 16.dp)
+                                        ) {
+                                        Icon(
+                                            imageVector = Icons.Filled.Menu,
+                                            tint = White,
+                                            contentDescription = "Localized description"
+                                        )
+                                    }
+
+                                    if (userData != null) {
+                                        ProfileDialog(userData = userData,
+                                            googleAuthUiClient = googleAuthUiClient,
+                                            navController = navController_par,
+                                            modifier = Modifier.align(Alignment.TopEnd).padding(top = 45.dp, end = 20.dp)
+                                        )
+                                    }
 
                                     TextField(
                                         modifier = Modifier
                                             .fillMaxWidth()
+                                            .align(Alignment.BottomCenter)
                                             .padding(horizontal = 12.dp)
 
                                         ,
@@ -347,7 +368,9 @@ fun HomeScreen(
                                         },
                                     )
 
-                                Spacer(modifier = Modifier.height(20.dp))
+                                    Spacer(modifier = Modifier.height(20.dp))
+
+                                }
 
                                 val chipList = listOf(
                                     "Latest",
