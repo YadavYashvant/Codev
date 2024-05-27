@@ -374,10 +374,10 @@ fun HomeScreen(
 
                                 val chipList = listOf(
                                     "Latest",
-                                    "Popular",
-                                    "Top Rated",
-                                    "Upcoming",
-                                    "Now Playing",
+                                    "Android",
+                                    "Web",
+                                    "iOS",
+                                    "Backend",
                                     "Trending"
                                 )
 
