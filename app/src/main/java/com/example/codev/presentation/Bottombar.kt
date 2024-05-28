@@ -54,7 +54,7 @@ navController: NavController
             hasNews = false,
         ),
         BottomNavigationItem(
-            title = "Projects",
+            title = "Chat",
             selectedIcon = painterResource(id = R.drawable.baseline_menu_book_24),
             unselectedIcon = painterResource(id = R.drawable.outline_library_books_24),
             hasNews = false,
