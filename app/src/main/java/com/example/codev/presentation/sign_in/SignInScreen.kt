@@ -9,16 +9,23 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountBox
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
@@ -46,11 +53,23 @@ fun SignInScreen(
         }
     }
 
-    Column {
+    Column(
+        modifier = Modifier.padding(top = 56.dp)
+    ) {
+
+            Image(
+                painter = painterResource(id = R.drawable.codev_signin_logo),
+                contentDescription = null,
+                modifier = Modifier.wrapContentWidth().clip(RoundedCornerShape(20.dp)).align(Alignment.CenterHorizontally),
+            )
+
+        // TextFields for custom sign in go here
+
 
         Box(
             modifier = Modifier
-                .fillMaxSize()
+                .wrapContentHeight()
+                .fillMaxWidth()
                 .padding(16.dp),
             contentAlignment = Alignment.Center
         ) {

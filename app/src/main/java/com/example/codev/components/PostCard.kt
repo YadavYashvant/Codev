@@ -27,6 +27,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
+import androidx.compose.material3.Surface
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
@@ -45,13 +47,13 @@ fun PostCard(
 ) {
     val mContext = LocalContext.current
 
-    Card(
-        /*elevation = CardDefaults.cardElevation(
+    OutlinedCard(
+        elevation = CardDefaults.cardElevation(
             defaultElevation = 16.dp
-        ),*/
-        /*colors = CardDefaults.outlinedCardColors(
-            containerColor = primaryContainerLight,
-        ),*/
+        ),
+        colors = CardDefaults.outlinedCardColors(
+//            containerColor = primaryContainerLight,
+        ),
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 16.dp, horizontal = 16.dp)
@@ -142,7 +144,9 @@ fun PostCard(
 
             Spacer(modifier = Modifier.height(8.dp))
             Row(
-                modifier = Modifier.padding(horizontal = 8.dp),
+                modifier = Modifier
+                    .padding(horizontal = 8.dp)
+                    .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
 
@@ -173,8 +177,14 @@ fun PostCard(
 
                 IconButton(onClick = { /*TODO*/ }
                 ) {
-                    Icon(painter = painterResource(id = R.drawable.chat), contentDescription = "Inquire")
-                    Text(text = "Inquire")
+                    Surface(
+
+                    ) {
+                        Row {
+                            Icon(painter = painterResource(id = R.drawable.chat), contentDescription = "Inquire", modifier = Modifier.scale(0.8f))
+                            Text(text = "Inquire")
+                        }
+                    }
                 }
         }
             }
