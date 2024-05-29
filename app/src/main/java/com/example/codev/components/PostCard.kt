@@ -21,14 +21,17 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Surface
+import androidx.compose.material3.TextButton
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -55,7 +58,7 @@ fun PostCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 16.dp
         ),
-        onClick = {navController.navigate("ProjectDescription")},
+        onClick = {navController.navigate("ProjectDescription/${post.name}")},
         colors = CardDefaults.outlinedCardColors(
 //            containerColor = primaryContainerLight,
         ),
@@ -148,6 +151,10 @@ fun PostCard(
             }
 
             Spacer(modifier = Modifier.height(8.dp))
+
+            Divider()
+
+            Spacer(modifier = Modifier.height(8.dp))
             Row(
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
@@ -180,12 +187,19 @@ fun PostCard(
                 }
             }
 
-                IconButton(onClick = {
+                Button(onClick = {
                     navController.navigate("Chat")
-                }
+                },
+                    modifier = Modifier
+                        .wrapContentWidth()
+                        .height(45.dp)
                 ) {
-                        Row {
-                            Icon(painter = painterResource(id = R.drawable.chat), contentDescription = "Inquire", modifier = Modifier.scale(0.8f))
+                        Row(
+                            modifier = Modifier,
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ){
+                            Icon(painter = painterResource(id = R.drawable.chat), contentDescription = "Inquire", modifier = Modifier.scale(0.6f))
+                            Text("Inquire", fontSize = 16.sp, fontFamily = spacefamily)
                         }
                 }
         }

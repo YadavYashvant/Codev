@@ -97,6 +97,7 @@ class MainActivity : ComponentActivity() {
             var darkTheme by remember { mutableStateOf(false) }
 
             val dataOrException = postsviewModel.data.value
+            val mydataOrException = postsviewModel.mydata.value
 
             CodevTheme(
                 darkTheme = darkTheme,
@@ -194,6 +195,7 @@ class MainActivity : ComponentActivity() {
                                 postsviewModel = postsviewModel,
                                 chatviewModel = chatviewModel,
                                 dataOrException = dataOrException,
+                                mydataOrException = mydataOrException,
                                 darkTheme = darkTheme,
                                 onThemeUpdated = { darkTheme = !darkTheme },
                                 userData = googleAuthUiClient.getSignedInUser(),

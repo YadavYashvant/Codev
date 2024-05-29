@@ -80,6 +80,7 @@ fun NotificationScreen() {
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
+            .padding(top = 40.dp, bottom = 80.dp)
            /* .verticalScroll(scrollState)*/
     ) {
         Text(text = "Bookmarks", modifier = Modifier

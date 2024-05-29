@@ -59,7 +59,8 @@ fun ProfileScreen(
     dataOrException: DataOrException<List<Post>, Exception>,
     googleAuthUiClient: GoogleAuthUiClient,
     navController_par: NavHostController,
-    chatviewModel: ChatViewModel
+    chatviewModel: ChatViewModel,
+    mydataOrException: DataOrException<List<Post>, Exception>
 ) {
     val navController = rememberNavController()
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
@@ -82,7 +83,7 @@ fun ProfileScreen(
 
             composable("Chat") {
                 onStatusBarColorChange(MaterialTheme.colorScheme.background)
-                EnterAnimation {
+
                     ChatScreen(navController,
                         userData,
                         googleAuthUiClient,
@@ -94,20 +95,18 @@ fun ProfileScreen(
                         ),
                         onSendChatClickListener = { msg -> chatviewModel.sendChat(msg) },
                         modifier = Modifier)
-                }
             }
 
-            composable("ProjectDescription"){
-                onStatusBarColorChange(MaterialTheme.colorScheme.background)
-                EnterAnimation {
-                    ProjectDescriptionScreen( navController, userData, googleAuthUiClient, postsviewModel, dataOrException)
-                }
+            composable("ProjectDescription/{postId}"){
+                    val postId = it.arguments?.getString("postId")
+                    val post = dataOrException.data?.find { it.name == postId }
+                    ProjectDescriptionScreen(post = post!!, navController = navController)
             }
 
             composable("Projects") {
                 onStatusBarColorChange(MaterialTheme.colorScheme.background)
                 EnterAnimation {
-                    ProjectScreen()
+                    ProjectScreen(postsviewModel, navController, mydataOrException)
                 }
 
             }

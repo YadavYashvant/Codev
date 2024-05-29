@@ -17,11 +17,16 @@ class ChatViewModel : ViewModel() {
     )
 
     private val questions = mutableListOf(
-        "What about yesterday?",
-        "Can you tell me what inside your head?",
-        "Lately, I've been wondering if I can really do anything, do you?",
-        "You know fear is often just an illusion, have you ever experienced it?",
-        "If you were me, what would you do?"
+        "What is the name of the project?",
+        "Can you describe the project?",
+        "What technologies are used in the project?",
+        "What is the purpose of the project?",
+        "Who are the intended users of the project?",
+        "What are the main features of the project?",
+        "What challenges did you face while working on the project?",
+        "How did you overcome these challenges?",
+        "What did you learn from working on the project?",
+        "What would you do differently if you were to start the project again?"
     )
 
     fun sendChat(msg: String) {

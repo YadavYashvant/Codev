@@ -5,6 +5,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.codev.data.DataOrException
@@ -28,10 +29,17 @@ class PostsViewModel @Inject constructor(
         )
     )
 
+    val mydata: MutableState<DataOrException<List<Post>, Exception>> = mutableStateOf(
+        DataOrException(
+            listOf(),
+            Exception("")
+        )
+    )
+
     init {
         getPosts()
         getsavedPosts()
-        getuserposts("Yashvant Yadav")
+        getMyPosts()
     }
 
     private fun getsavedPosts() {
@@ -48,20 +56,11 @@ class PostsViewModel @Inject constructor(
         }
     }
 
-    public fun searchPosts(query: String) {
-        viewModelScope.launch {
-            loading.value = true
-            data.value = repository.searchPostsInFirestore(query)
-            Log.d("PostsViewModel", "searchPosts: ${data.value.data}")
-            loading.value = false
-        }
-    }
-
-    public fun getuserposts(username: String) {
+    private fun getMyPosts(){
         viewModelScope.launch {
             loadinguserposts.value = true
-            data.value = repository.getuserPostsFromFirestore(username)
-            Log.d("PostsViewModel", "getuserposts: ${data.value.data}")
+            mydata.value = repository.getMyPostsFromFirestore()
+            Log.d("PostsViewModel", "getMyPosts: ${mydata.value.data}")
             loadinguserposts.value = false
         }
     }
