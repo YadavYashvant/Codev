@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class ChatViewModel : ViewModel() {
 
     val conversation: StateFlow<List<ChatUiModel.Message>>
         get() = _conversation

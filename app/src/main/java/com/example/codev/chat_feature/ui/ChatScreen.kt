@@ -59,7 +59,7 @@ fun ChatScreen(
     onSendChatClickListener: (String) -> Unit,
     modifier: Modifier
 ) {
-    ConstraintLayout(modifier = Modifier.fillMaxSize()) {
+    ConstraintLayout(modifier = modifier.fillMaxSize()) {
         val (messages, chatBox) = createRefs()
 
         val listState = rememberLazyListState()

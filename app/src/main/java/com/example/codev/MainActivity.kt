@@ -39,6 +39,7 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.codev.chat_feature.viewmodel.ChatViewModel
 import com.example.codev.firestore_feature.PostsViewModel
 import com.example.codev.presentation.daos.UserDao
 import com.example.codev.presentation.models.User
@@ -64,6 +65,7 @@ var reading = true
 class MainActivity : ComponentActivity() {
 
     private val postsviewModel: PostsViewModel by viewModels()
+    private val chatviewModel: ChatViewModel by viewModels()
 
     private val googleAuthUiClient by lazy {
         GoogleAuthUiClient(
@@ -190,6 +192,7 @@ class MainActivity : ComponentActivity() {
                                 },
                                 navController_par = navController,
                                 postsviewModel = postsviewModel,
+                                chatviewModel = chatviewModel,
                                 dataOrException = dataOrException,
                                 darkTheme = darkTheme,
                                 onThemeUpdated = { darkTheme = !darkTheme },

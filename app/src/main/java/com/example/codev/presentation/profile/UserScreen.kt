@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -26,11 +27,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.codev.R
 import com.example.codev.animations.EnterAnimation
+import com.example.codev.chat_feature.model.ChatUiModel
 import com.example.codev.data.DataOrException
 import com.example.codev.firestore_feature.PostsViewModel
 import com.example.codev.firestore_feature.model.Post
 import com.example.codev.presentation.screens.AddprojectScreen
 import com.example.codev.chat_feature.ui.ChatScreen
+import com.example.codev.chat_feature.viewmodel.ChatViewModel
 import com.example.codev.presentation.screens.HomeScreen
 import com.example.codev.presentation.screens.NotificationScreen
 import com.example.codev.presentation.screens.ProjectDescriptionScreen
@@ -55,10 +58,12 @@ fun ProfileScreen(
     postsviewModel: PostsViewModel,
     dataOrException: DataOrException<List<Post>, Exception>,
     googleAuthUiClient: GoogleAuthUiClient,
-    navController_par: NavHostController
+    navController_par: NavHostController,
+    chatviewModel: ChatViewModel
 ) {
     val navController = rememberNavController()
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+    val conversation = chatviewModel.conversation.collectAsState()
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -83,9 +88,12 @@ fun ProfileScreen(
                         googleAuthUiClient,
                         postsviewModel,
                         dataOrException,
-                        model = ChatUiModel(),
-                        onSendChatClickListener = {},
-                        modifier = Modifier.fillMaxSize())
+                        model = ChatUiModel(
+                            messages = conversation.value,
+                            addressee = ChatUiModel.Author.bot
+                        ),
+                        onSendChatClickListener = { msg -> chatviewModel.sendChat(msg) },
+                        modifier = Modifier)
                 }
             }
 
