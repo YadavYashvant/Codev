@@ -16,21 +16,30 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountBox
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.focusModifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -54,7 +63,8 @@ fun SignInScreen(
     }
 
     Column(
-        modifier = Modifier.padding(top = 56.dp)
+        modifier = Modifier.padding(top = 56.dp),
+        verticalArrangement = Arrangement.SpaceAround
     ) {
 
             Image(
@@ -63,8 +73,7 @@ fun SignInScreen(
                 modifier = Modifier.wrapContentWidth().clip(RoundedCornerShape(20.dp)).align(Alignment.CenterHorizontally),
             )
 
-        // TextFields for custom sign in go here
-
+        LoginScreen(onLoginClick = { _, _ -> })
 
         Box(
             modifier = Modifier
@@ -95,5 +104,54 @@ fun SignInScreen(
                 }
             }
         }
+    }
+}
+
+@Composable
+fun LoginScreen( onLoginClick: (String, String) -> Unit) {
+    var usernameOrEmail by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+
+    Column(
+        modifier = Modifier
+            .wrapContentHeight()
+            .fillMaxWidth()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Card(modifier = Modifier.padding(16.dp).wrapContentHeight()) {
+
+            OutlinedTextField(value = usernameOrEmail,
+                onValueChange = { usernameOrEmail = it },
+                label = { Text("Username or Email") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp)
+                    .padding(vertical = 8.dp, horizontal = 16.dp)
+            )
+            OutlinedTextField(
+                value = password,
+                onValueChange = { password = it },
+                label = { Text("Password") },
+                visualTransformation = PasswordVisualTransformation(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp)
+                    .padding(vertical = 8.dp, horizontal = 16.dp)
+            )
+            Button(
+                onClick = { onLoginClick(usernameOrEmail, password) },
+                modifier = Modifier
+                    .padding(vertical = 16.dp, horizontal = 8.dp)
+                    .align(Alignment.CenterHorizontally)
+            ) {
+                Text("Login")
+            }
+        }
+
+        Text(text = "OR", modifier = Modifier
+            .wrapContentWidth()
+            .padding(16.dp))
     }
 }

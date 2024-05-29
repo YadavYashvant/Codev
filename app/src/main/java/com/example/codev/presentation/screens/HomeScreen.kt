@@ -449,7 +449,7 @@ fun HomeScreen(
                     },
 //                    containerColor = greenV,
                     modifier = Modifier
-                        .padding(bottom = 20.dp, end = 30.dp)
+                        .padding(bottom = 30.dp, end = 30.dp)
                         .align(Alignment.BottomEnd)
                 ) {
                     Icon(

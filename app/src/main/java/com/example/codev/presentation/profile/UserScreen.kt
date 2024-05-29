@@ -30,7 +30,7 @@ import com.example.codev.data.DataOrException
 import com.example.codev.firestore_feature.PostsViewModel
 import com.example.codev.firestore_feature.model.Post
 import com.example.codev.presentation.screens.AddprojectScreen
-import com.example.codev.presentation.screens.ChatScreen
+import com.example.codev.chat_feature.ui.ChatScreen
 import com.example.codev.presentation.screens.HomeScreen
 import com.example.codev.presentation.screens.NotificationScreen
 import com.example.codev.presentation.screens.ProjectDescriptionScreen
@@ -78,7 +78,14 @@ fun ProfileScreen(
             composable("Chat") {
                 onStatusBarColorChange(MaterialTheme.colorScheme.background)
                 EnterAnimation {
-                    ChatScreen(navController, userData, googleAuthUiClient, postsviewModel, dataOrException)
+                    ChatScreen(navController,
+                        userData,
+                        googleAuthUiClient,
+                        postsviewModel,
+                        dataOrException,
+                        model = ChatUiModel(),
+                        onSendChatClickListener = {},
+                        modifier = Modifier.fillMaxSize())
                 }
             }
 
