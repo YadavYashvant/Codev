@@ -20,6 +20,7 @@ class PostsViewModel @Inject constructor(
     private val repository: PostsRepository
 ): ViewModel() {
     var loading = mutableStateOf(false)
+    var loadinguserposts = mutableStateOf(false)
     val data: MutableState<DataOrException<List<Post>, Exception>> = mutableStateOf(
         DataOrException(
             listOf(),
@@ -58,9 +59,10 @@ class PostsViewModel @Inject constructor(
 
     public fun getuserposts(username: String) {
         viewModelScope.launch {
-            loading.value = true
+            loadinguserposts.value = true
             data.value = repository.getuserPostsFromFirestore(username)
-            loading.value = false
+            Log.d("PostsViewModel", "getuserposts: ${data.value.data}")
+            loadinguserposts.value = false
         }
     }
 

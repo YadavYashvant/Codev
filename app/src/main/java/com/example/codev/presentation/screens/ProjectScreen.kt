@@ -48,9 +48,11 @@ fun ProjectScreen() {
             .verticalScroll(scrollState)
             .padding(vertical = 16.dp)
     ) {
-        Text(text = "Your Projects", fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 36.sp, modifier = Modifier.padding(16.dp).align(Alignment.CenterHorizontally))
-        Card(
-            onClick = { /*TODO*/ },
+        Text(text = "Your Projects", fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 36.sp, modifier = Modifier.padding(16.dp)
+            .padding(top = 56.dp)
+            .align(Alignment.CenterHorizontally))
+        /*Card(
+            onClick = { *//*TODO*//* },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(20.dp)
@@ -99,13 +101,13 @@ fun ProjectScreen() {
                         .align(Alignment.Start)
                         .clip(shape = MaterialTheme.shapes.extraLarge)
                         .background(color = Color.White)
-                    /*.background(color = Color.LightGray)*/
+                    *//*.background(color = Color.LightGray)*//*
                     ,
                     horizontalArrangement = Arrangement.SpaceBetween
 
                 ) {
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { *//*TODO*//* },
                         modifier = Modifier
                             .padding(vertical = 12.dp, horizontal = 16.dp)
                     ) {
@@ -113,15 +115,15 @@ fun ProjectScreen() {
                     }
 
                     OutlinedButton(
-                        onClick = { /*TODO*/ },
+                        onClick = { *//*TODO*//* },
                         modifier = Modifier
                             .padding(vertical = 12.dp, horizontal = 16.dp)
                     ) {
                         Icon(imageVector = Icons.Filled.Info, contentDescription = "info", Modifier.padding(end = 5.dp))
-                        Text(text = "Inquire", fontFamily = spacefamily, /*fontWeight = FontWeight.Bold*/)
+                        Text(text = "Inquire", fontFamily = spacefamily, *//*fontWeight = FontWeight.Bold*//*)
                     }
                 }
             }
-        }
+        }*/
     }
 }
