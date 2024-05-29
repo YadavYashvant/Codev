@@ -49,7 +49,7 @@ fun ProjectScreen() {
             .padding(vertical = 16.dp)
     ) {
         Text(text = "Your Projects", fontFamily = spacefamily, fontWeight = FontWeight.Bold, fontSize = 36.sp, modifier = Modifier.padding(16.dp)
-            .padding(top = 56.dp)
+            .padding(top = 32.dp)
             .align(Alignment.CenterHorizontally))
         /*Card(
             onClick = { *//*TODO*//* },

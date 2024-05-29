@@ -30,8 +30,10 @@ import com.example.codev.data.DataOrException
 import com.example.codev.firestore_feature.PostsViewModel
 import com.example.codev.firestore_feature.model.Post
 import com.example.codev.presentation.screens.AddprojectScreen
+import com.example.codev.presentation.screens.ChatScreen
 import com.example.codev.presentation.screens.HomeScreen
 import com.example.codev.presentation.screens.NotificationScreen
+import com.example.codev.presentation.screens.ProjectDescriptionScreen
 import com.example.codev.presentation.screens.ProjectScreen
 import com.example.codev.presentation.screens.SettingScreen
 import com.example.codev.presentation.sign_in.GoogleAuthUiClient
@@ -72,6 +74,21 @@ fun ProfileScreen(
                     HomeScreen(navController, navController_par , userData, googleAuthUiClient, postsviewModel, dataOrException)
                 }
             }
+
+            composable("Chat") {
+                onStatusBarColorChange(MaterialTheme.colorScheme.background)
+                EnterAnimation {
+                    ChatScreen(navController, userData, googleAuthUiClient, postsviewModel, dataOrException)
+                }
+            }
+
+            composable("ProjectDescription"){
+                onStatusBarColorChange(MaterialTheme.colorScheme.background)
+                EnterAnimation {
+                    ProjectDescriptionScreen( navController, userData, googleAuthUiClient, postsviewModel, dataOrException)
+                }
+            }
+
             composable("Projects") {
                 onStatusBarColorChange(MaterialTheme.colorScheme.background)
                 EnterAnimation {

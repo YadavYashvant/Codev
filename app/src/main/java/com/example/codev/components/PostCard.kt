@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -33,6 +34,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.navigation.NavController
 import com.example.codev.R
 import com.example.codev.firestore_feature.addtosavedcollections
 import com.example.codev.firestore_feature.model.Post
@@ -40,10 +42,12 @@ import com.example.codev.firestore_feature.savedposts
 import com.example.codev.presentation.spacefamily
 import com.example.codev.ui.theme.primaryContainerLight
 
+@OptIn(ExperimentalMaterial3Api::class)
 @ExperimentalCoroutinesApi
 @Composable
 fun PostCard(
-    post: Post
+    post: Post,
+    navController: NavController
 ) {
     val mContext = LocalContext.current
 
@@ -51,6 +55,7 @@ fun PostCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 16.dp
         ),
+        onClick = {navController.navigate("ProjectDescription")},
         colors = CardDefaults.outlinedCardColors(
 //            containerColor = primaryContainerLight,
         ),
@@ -175,16 +180,13 @@ fun PostCard(
                 }
             }
 
-                IconButton(onClick = { /*TODO*/ }
+                IconButton(onClick = {
+                    navController.navigate("Chat")
+                }
                 ) {
-                    Surface(
-
-                    ) {
                         Row {
                             Icon(painter = painterResource(id = R.drawable.chat), contentDescription = "Inquire", modifier = Modifier.scale(0.8f))
-                            Text(text = "Inquire")
                         }
-                    }
                 }
         }
             }

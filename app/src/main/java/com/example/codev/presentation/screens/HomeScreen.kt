@@ -402,7 +402,7 @@ fun HomeScreen(
 //                                posts
                                 ) { post ->
                                     Spacer(modifier = Modifier.height(8.dp))
-                                    PostCard(post = post)
+                                    PostCard(post = post, navController = navController)
                                     Spacer(modifier = Modifier.height(8.dp))
                                     Divider(modifier = Modifier
                                         .height(1.dp)
@@ -415,7 +415,7 @@ fun HomeScreen(
                                     posts
                                 ) { post ->
                                     Spacer(modifier = Modifier.height(8.dp))
-                                    PostCard(post = post)
+                                    PostCard(post = post, navController = navController)
                                     Spacer(modifier = Modifier.height(8.dp))
                                     Divider(modifier = Modifier
                                         .height(1.dp)
