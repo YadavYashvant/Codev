@@ -30,6 +30,7 @@ class PostsViewModel @Inject constructor(
     init {
         getPosts()
         getsavedPosts()
+        getuserposts("Yashvant Yadav")
     }
 
     private fun getsavedPosts() {
@@ -51,6 +52,14 @@ class PostsViewModel @Inject constructor(
             loading.value = true
             data.value = repository.searchPostsInFirestore(query)
             Log.d("PostsViewModel", "searchPosts: ${data.value.data}")
+            loading.value = false
+        }
+    }
+
+    public fun getuserposts(username: String) {
+        viewModelScope.launch {
+            loading.value = true
+            data.value = repository.getuserPostsFromFirestore(username)
             loading.value = false
         }
     }
