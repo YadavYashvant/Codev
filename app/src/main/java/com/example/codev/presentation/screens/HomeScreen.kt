@@ -3,8 +3,17 @@ package com.example.codev.presentation.screens
 import android.annotation.SuppressLint
 import android.util.Log
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -18,11 +27,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -35,6 +46,7 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DismissibleDrawerSheet
 import androidx.compose.material3.Divider
@@ -48,7 +60,9 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBarDefaults
@@ -61,6 +75,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
+//import androidx.compose.ui.draw.EmptyBuildDrawCacheParams.density
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
@@ -83,6 +100,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import coil.compose.AsyncImage
 import com.example.codev.R
 import com.example.codev.animations.AnimatedPreloaderBill
 import com.example.codev.animations.AnimatedPreloaderLogin
@@ -97,12 +115,15 @@ import com.example.codev.presentation.FilterChipHome
 import com.example.codev.presentation.ProfileDialog
 import com.example.codev.presentation.sign_in.GoogleAuthUiClient
 import com.example.codev.presentation.sign_in.UserData
+import com.example.codev.presentation.sign_in.fontfamily
 import com.example.codev.ui.AppBarCollapsedHeight
 import com.example.codev.ui.AppBarExpendedHeight
 import com.example.codev.ui.theme.greenV
 import com.google.accompanist.insets.LocalWindowInsets
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.math.max
 import kotlin.math.min
 
@@ -147,6 +168,10 @@ fun HomeScreen(
     val offset = min(scrollState.firstVisibleItemScrollOffset, maxOffset)
 
     val offsetProgress = max(0f, offset * 3f - 2f * maxOffset) / maxOffset
+
+    var profilevisible by remember {
+        mutableStateOf(false)
+    }
 
 
     ModalNavigationDrawer(
@@ -282,7 +307,8 @@ fun HomeScreen(
                                             textAlign = TextAlign.Center,
                                             fontWeight = FontWeight.ExtraBold
                                         ),
-                                        modifier = Modifier.fillMaxSize()
+                                        modifier = Modifier
+                                            .fillMaxSize()
                                             .paddingFromBaseline(top = 160.dp)
                                             .padding(horizontal = 20.dp)
                                         )
@@ -306,7 +332,9 @@ fun HomeScreen(
                                             drawerState.open()
                                         }
                                     },
-                                        modifier = Modifier.align(Alignment.TopStart).padding(top = 45.dp, start = 16.dp)
+                                        modifier = Modifier
+                                            .align(Alignment.TopStart)
+                                            .padding(top = 45.dp, start = 16.dp)
                                         ) {
                                         Icon(
                                             imageVector = Icons.Filled.Menu,
@@ -371,6 +399,86 @@ fun HomeScreen(
                                     Spacer(modifier = Modifier.height(20.dp))
 
                                 }
+
+                                /*AnimatedVisibility(
+                                    visible = profilevisible,
+                                    enter = *//*slideInVertically {
+                                        // Slide in from 40 dp from the top.
+                                        with(density) { -40.dp.roundToPx() }
+                                    } *//* expandVertically(
+                                        // Expand from the top.
+                                        expandFrom = Alignment.Top
+                                    ) + fadeIn(
+                                        // Fade in with the initial alpha of 0.3f.
+                                        initialAlpha = 0.3f
+                                    ),
+                                    exit = slideOutVertically() + shrinkVertically() + fadeOut()
+
+
+                                ) {
+
+                                    Column(
+                                        Modifier.fillMaxSize().
+                                        clip(RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp)).
+                                        padding(horizontal = 12.dp)
+                                            .padding(bottom = 86.dp, top = 45.dp)
+                                    ) {
+                                        if (userData != null) {
+                                            Card(
+                                                modifier = Modifier.padding(12.dp)
+                                            ) {
+                                                AsyncImage(
+                                                    model = userData.profilePicture,
+                                                    contentDescription = null,
+                                                    modifier = Modifier
+                                                        .fillMaxWidth()
+                                                        .wrapContentHeight()
+//                                                    .clickable { profilevisible = true }
+                                                        .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)),
+                                                    contentScale = ContentScale.Crop,
+                                                )
+
+                                                if (userData.username != null) {
+                                                    Text(
+                                                        text = userData.username,
+                                                        textAlign = TextAlign.Center,
+                                                        fontSize = 25.sp,
+                                                        fontWeight = FontWeight.SemiBold,
+                                                        fontFamily = fontfamily
+                                                    )
+                                                    Spacer(modifier = Modifier.height(10.dp))
+                                                }
+                                                Row(
+                                                    modifier = Modifier
+                                                        .fillMaxWidth(),
+                                                    horizontalArrangement = Arrangement.Center,
+                                                ) {
+                                                    TextButton(
+                                                        onClick = { profilevisible = false },
+                                                        modifier = Modifier.padding(8.dp),
+                                                    ) {
+                                                        Text("Cancel")
+                                                    }
+                                                    TextButton(
+                                                        onClick = {
+                                                            scope.launch {
+                                                                withContext(NonCancellable) {
+                                                                    googleAuthUiClient.signOut()
+                                                                }
+                                                            }
+                                                            profilevisible = false
+                                                            navController.navigate("sign_in")
+                                                        },
+                                                        modifier = Modifier.padding(8.dp),
+                                                    ) {
+                                                        Text("Sign Out")
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                }*/
 
                                 val chipList = listOf(
                                     "Latest",

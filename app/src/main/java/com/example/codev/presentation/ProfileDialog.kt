@@ -11,8 +11,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -65,7 +67,10 @@ fun ProfileDialog(
     }
 
     if (openDialog.value) {
-        Dialog(onDismissRequest = { openDialog.value = false }) {
+        Dialog(
+            onDismissRequest = { openDialog.value = false },
+
+        ) {
 
             val mcontext = LocalContext.current
 
@@ -74,8 +79,9 @@ fun ProfileDialog(
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(400.dp)
-                    .padding(16.dp),
+                    .height(600.dp)
+//                    .padding(16.dp),
+                        ,
                 shape = RoundedCornerShape(16.dp),
             ) {
                 Column(
@@ -86,16 +92,24 @@ fun ProfileDialog(
                 ) {
                     if (userData.profilePicture != null) {
                         AsyncImage(
-                            model = userData?.profilePicture,
+                            model = userData.profilePicture,
                             contentDescription = null,
                             modifier = Modifier
-                                .size(125.dp)
-                                .clip(MaterialTheme.shapes.extraLarge),
+                                .fillMaxWidth()
+                                .height(300.dp)
+                                .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+//                                .clip(MaterialTheme.shapes.extraLarge),
+                                    ,
                             contentScale = ContentScale.Crop
                         )
 
                         Spacer(modifier = Modifier.height(10.dp))
                     }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Divider()
+                    Spacer(modifier = Modifier.height(8.dp))
+
                     if (userData.username != null) {
                         Text(
                             text = userData.username,
@@ -106,6 +120,31 @@ fun ProfileDialog(
                         )
                         Spacer(modifier = Modifier.height(10.dp))
                     }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Divider()
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Card(
+                        modifier = Modifier.padding(12.dp)
+                    ) {
+                        Column(){
+                            Text(
+                                text = "My Skills",
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                fontFamily = fontfamily
+
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Text(
+                                text = "Android Developement, Backend Developement, Linux, Spring-Boot",
+                                fontSize = 16.sp,
+                                fontFamily = fontfamily
+                            )
+                        }
+                    }
+
                     Row(
                         modifier = Modifier
                             .fillMaxWidth(),
