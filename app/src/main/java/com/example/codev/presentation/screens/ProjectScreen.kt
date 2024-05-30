@@ -38,7 +38,8 @@ fun ProjectScreen(
 ) {
     val scrollState = rememberScrollState()
     val myposts = mydataOrException.data
-    myposts?.let{
+
+    myposts?.let {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -66,6 +67,37 @@ fun ProjectScreen(
                 val post = myposts[index]
                 PostCard(post = post, navController = navController)
             }
+        }
+    }
+
+    /*myposts?.let{
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(vertical = 16.dp)
+                .padding(bottom = 80.dp)
+        ) {
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp)
+                        .padding(top = 32.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        fontFamily = spacefamily,
+                        text = "Projects",
+                        fontSize = 36.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+
+            items(myposts.size) { index ->
+                val post = myposts[index]
+                PostCard(post = post, navController = navController)
+            }*/
 
 
 
@@ -143,6 +175,4 @@ fun ProjectScreen(
                 }
             }
         }*/
-        }
-    }
 }
