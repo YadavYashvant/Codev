@@ -26,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.codev.data.DataOrException
 import com.example.codev.firestore_feature.PostsViewModel
@@ -59,7 +60,7 @@ fun ProjectDescriptionScreen(
                 .padding(16.dp)
                 .padding(top = 80.dp),
         ){
-                Text(text = "More About Project \uD83E\uDDCA", style = MaterialTheme.typography.displayMedium, fontFamily = fontfamily)
+                Text(text = "More About ${post.name} \uD83E\uDDCA", style = MaterialTheme.typography.displayMedium, fontSize = 36.sp, fontFamily = fontfamily)
                 Spacer(modifier = Modifier.height(24.dp))
                 Text(text = "Project Name: ${post.name}", style = MaterialTheme.typography.bodyLarge, fontFamily = fontfamily)
                 Spacer(modifier = Modifier.height(16.dp))

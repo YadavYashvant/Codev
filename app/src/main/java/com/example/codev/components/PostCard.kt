@@ -203,6 +203,171 @@ fun PostCard(
                         }
                 }
         }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@ExperimentalCoroutinesApi
+@Composable
+fun MyPostCard(
+    post: Post,
+    navController: NavController
+){
+    val mContext = LocalContext.current
+
+    OutlinedCard(
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 16.dp
+        ),
+        onClick = {navController.navigate("ProjectDescription/${post.name}")},
+        colors = CardDefaults.outlinedCardColors(
+//            containerColor = primaryContainerLight,
+        ),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 16.dp, horizontal = 16.dp)
+    ) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+                .wrapContentHeight()
+        ) {
+            Spacer(modifier = Modifier.width(8.dp))
+
+            post.name?.let {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(4.dp)
+                        .align(Alignment.CenterHorizontally),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = it,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(4.dp),
+                        fontFamily = spacefamily,
+                    )
+                }
             }
+            Spacer(modifier = Modifier.height(8.dp))
+
+            post.branch?.let {
+                Text(
+                    text = it,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(4.dp)
+                        .align(Alignment.CenterHorizontally),
+                    fontFamily = spacefamily,
+                )
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+            post.skill.let {
+                OutlinedCard(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                        .background(
+                            color = MaterialTheme.colorScheme.onSurface,
+                            shape = RoundedCornerShape(20.dp)
+                        )
+                        .align(Alignment.CenterHorizontally),
+
+                    ) {
+                    Text(
+                        text = it,
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                            .align(Alignment.CenterHorizontally),
+                        fontFamily = spacefamily,
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(25.dp))
+
+            post.uid?.let {
+                Text(
+                    text = "POSTED BY - $it",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Light,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(4.dp)
+                        .align(Alignment.CenterHorizontally),
+                    fontFamily = spacefamily,
+                    fontStyle = FontStyle.Italic
+                )
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Divider()
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+
+
+            /*Row(
+                modifier = Modifier
+                    .padding(horizontal = 8.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+
+                IconButton(onClick = {
+                    //post.isSaved = true
+                    addtosavedcollections(
+                        post.name!!,
+                        post.branch!!,
+                        post.skill!!,
+                        post.uid,
+                        mContext
+                    )
+
+                }) {
+                    if (post in savedposts) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.bookmark_filled),
+                            contentDescription = null
+                        )
+                    }
+                    else {
+                        Icon(
+                            painter = painterResource(id = R.drawable.bookmark_outlined),
+                            contentDescription = null
+                        )
+                    }
+                }
+
+                Button(onClick = {
+                    navController.navigate("Chat")
+                },
+                    modifier = Modifier
+                        .wrapContentWidth()
+                        .height(45.dp)
+                ) {
+                    Row(
+                        modifier = Modifier,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ){
+                        Icon(painter = painterResource(id = R.drawable.chat), contentDescription = "Inquire", modifier = Modifier.scale(0.6f))
+                        Text("Inquire", fontSize = 16.sp, fontFamily = spacefamily)
+                    }
+                }
+            }*/
+        }
     }
 }
