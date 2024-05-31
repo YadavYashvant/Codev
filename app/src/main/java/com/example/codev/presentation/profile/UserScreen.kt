@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -60,7 +61,8 @@ fun ProfileScreen(
     googleAuthUiClient: GoogleAuthUiClient,
     navController_par: NavHostController,
     chatviewModel: ChatViewModel,
-    mydataOrException: DataOrException<List<Post>, Exception>
+    mydataOrException: DataOrException<List<Post>, Exception>,
+    skills: MutableState<String>
 ) {
     val navController = rememberNavController()
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
@@ -77,7 +79,7 @@ fun ProfileScreen(
             composable("Home") {
                 onStatusBarColorChange(MaterialTheme.colorScheme.background)
                 EnterAnimation {
-                    HomeScreen(navController, navController_par , userData, googleAuthUiClient, postsviewModel, dataOrException)
+                    HomeScreen(navController, navController_par ,skills, userData, googleAuthUiClient, postsviewModel, dataOrException)
                 }
             }
 

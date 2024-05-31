@@ -99,6 +99,8 @@ class MainActivity : ComponentActivity() {
             val dataOrException = postsviewModel.data.value
             val mydataOrException = postsviewModel.mydata.value
 
+            var skills = remember { mutableStateOf("Android Developement, Backend Developement, Linux, Spring-Boot") }
+
             CodevTheme(
                 darkTheme = darkTheme,
             ) {
@@ -194,6 +196,7 @@ class MainActivity : ComponentActivity() {
                                 navController_par = navController,
                                 postsviewModel = postsviewModel,
                                 chatviewModel = chatviewModel,
+                                skills = skills,
                                 dataOrException = dataOrException,
                                 mydataOrException = mydataOrException,
                                 darkTheme = darkTheme,
