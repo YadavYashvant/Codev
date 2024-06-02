@@ -89,5 +89,6 @@ dependencies {
 
     implementation "com.google.accompanist:accompanist-insets:0.17.0"
 //    implementation "com.github.omkar-tenkale:ExplodingComposable:1.0.1"
+    implementation 'com.github.Spikeysanju:MotionToast:1.4'
 
 }

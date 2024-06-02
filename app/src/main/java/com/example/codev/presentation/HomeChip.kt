@@ -1,5 +1,7 @@
 package com.example.codev.presentation
 
+import android.app.Activity
+import android.content.Context
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -16,16 +18,34 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.core.content.res.ResourcesCompat
+import com.example.codev.R
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FilterChipHome(
-    filterText: String
+    filterText: String,
+    context: Context
 ) {
     var selected by remember { mutableStateOf(false) }
 
     FilterChip(
-        onClick = { selected = !selected },
+        onClick = {
+            selected = !selected
+
+            MotionToast.darkToast(
+                context as Activity,
+                "Hurray success 😍",
+                "Upload Completed successfully!",
+                MotionToastStyle.SUCCESS,
+                MotionToast.GRAVITY_BOTTOM,
+                MotionToast.LONG_DURATION,
+                ResourcesCompat.getFont(context, R.font.rubik_regular))
+
+
+        },
         label = {
             Text(filterText)
         },

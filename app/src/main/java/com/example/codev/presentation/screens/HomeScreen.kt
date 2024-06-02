@@ -60,19 +60,15 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Transparent
-import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.codev.R
+import com.example.codev.animations.AnimatedPreloaderBill
 import com.example.codev.components.CircularProgressBar
 import com.example.codev.components.PostCard
 import com.example.codev.data.DataOrException
@@ -249,6 +245,7 @@ fun HomeScreen(
                                 Box(
                                     modifier = Modifier
                                         .padding(bottom = 20.dp)
+                                        .height(500.dp)
 //                                        .wrapContentHeight()
                                         /*.graphicsLayer {
                                             alpha = 1f - offsetProgress
@@ -256,17 +253,18 @@ fun HomeScreen(
                                 ) {
 
                                     Image(
-                                        painter = painterResource(id = R.drawable.cafe),
+                                        painter = painterResource(id = R.drawable.codev_bg_cropped),
                                         contentScale = ContentScale.Crop,
-                                        modifier = Modifier
+                                        modifier = Modifier.fillMaxWidth(),
+                                        /*modifier = Modifier
                                             .height(520.dp)
                                             .onGloballyPositioned {
                                                 sizeImage = it.size
-                                            },
+                                            },*/
                                         contentDescription = "cafe"
                                     )
 
-                                    Text(text = "Welcome \n to \n Codev",
+                                    /*Text(text = "Welcome \n to \n Codev",
                                         style = TextStyle(
                                             color = White,
                                             fontSize = 70.sp,
@@ -277,21 +275,22 @@ fun HomeScreen(
                                             .fillMaxSize()
                                             .paddingFromBaseline(top = 160.dp)
                                             .padding(horizontal = 20.dp)
-                                        )
+                                        )*/
 
-                                    /*AnimatedPreloaderBill(
+                                    AnimatedPreloaderBill(
                                         modifier = Modifier
                                             .height(350.dp)
+                                            .align(Alignment.BottomCenter)
 
                                             .fillMaxWidth()
                                         //.padding(top = 40.dp)
-                                    )*/
+                                    )
 
-                                    Box(
+                                    /*Box(
                                         modifier = Modifier
                                             .matchParentSize()
                                             .background(gradient)
-                                    )
+                                    )*/
 
                                     IconButton(onClick = {
                                         scope.launch {
@@ -304,7 +303,7 @@ fun HomeScreen(
                                         ) {
                                         Icon(
                                             imageVector = Icons.Filled.Menu,
-                                            tint = White,
+//                                            tint = White,
                                             contentDescription = "Localized description"
                                         )
                                     }
@@ -466,7 +465,7 @@ fun HomeScreen(
                                         .horizontalScroll(scrollstate)
                                 ) {
                                     for (i in 0..5) {
-                                        FilterChipHome(chipList[i])
+                                        FilterChipHome(chipList[i], LocalContext.current)
                                     }
                                 }
                             }

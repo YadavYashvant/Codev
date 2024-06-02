@@ -3,13 +3,11 @@ package com.example.codev.components
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -30,8 +28,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
-import androidx.compose.material3.Surface
-import androidx.compose.material3.TextButton
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -43,7 +43,6 @@ import com.example.codev.firestore_feature.addtosavedcollections
 import com.example.codev.firestore_feature.model.Post
 import com.example.codev.firestore_feature.savedposts
 import com.example.codev.presentation.spacefamily
-import com.example.codev.ui.theme.primaryContainerLight
 
 @OptIn(ExperimentalMaterial3Api::class)
 @ExperimentalCoroutinesApi
@@ -53,6 +52,9 @@ fun PostCard(
     navController: NavController
 ) {
     val mContext = LocalContext.current
+    var isSaved by remember {
+        mutableStateOf(false)
+    }
 
     OutlinedCard(
         elevation = CardDefaults.cardElevation(
@@ -164,16 +166,19 @@ fun PostCard(
 
             IconButton(onClick = {
                 //post.isSaved = true
+//                savedposts.add(post)
+                isSaved = !isSaved
                 addtosavedcollections(
                     post.name!!,
                     post.branch!!,
                     post.skill!!,
                     post.uid,
-                    mContext
+                    mContext,
+//                    isSaved
                 )
-
             }) {
-                if (post in savedposts) {
+
+                if (isSaved || post in savedposts){
                     Icon(
                         painter = painterResource(id = R.drawable.bookmark_filled),
                         contentDescription = null
@@ -236,7 +241,7 @@ fun MyPostCard(
         ) {
             Spacer(modifier = Modifier.width(8.dp))
 
-            post.name?.let {
+            post.name.let {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
